@@ -1,0 +1,58 @@
+<!-- tab -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body" style="margin-left: 50px">
+        <div class="row col-md-12">
+            <div class="container">
+               <h2><strong>{{name}}</strong></h2>
+            </div>
+            <div class="container">
+                <p class="text-cente"><strong>{{name_en}}</strong></p>
+            </div>
+            <div class="container">
+                <p class="text-left"><strong>{{author}}</strong></p>
+            </div>
+            <div class="container">
+                <p class="text-left"><strong>{{authorIntroduction}}</strong></p>
+            </div>
+        </div>
+
+        <div class="row col-md-12">
+          
+          <tabset class="tab-container" ng-model="tabset">
+              <tab heading="摘要" ng-click="tabset=1">
+                  <div class="row">
+                     <p><strong>摘要：</strong>{{authorIntroduction}}</p> 
+                  </div>
+
+                  <div class="row">
+                      <p><strong>关键字：</strong>{{keyword}}</p>
+                  </div>
+                  <div class="row">
+                      <p><strong>Abstract：</strong>{{summary_en}}</p> 
+                  </div>
+                  <div class="row">
+                     <p><strong>Keyword： </strong>{{keyword_en}}</p>
+                  </div>
+              </tab>
+              <tab heading="参考文献" ng-click="tabset=2">
+                  <div class="row">
+                     <p><strong>参考文献： </strong>{{query1}}</p>
+                  </div>
+              </tab>
+              <tab heading="全文下载" ng-click="tabset=3">
+                  <div class="row">
+                     <p><strong>附相关文档下载：</strong>{{query1}}</p>
+                  </div>
+
+                  <div class="row" ng-repeat="attach in attach_file_list">
+                      <a ng-href="{{attach.bigFilename}}">{{attach.filename}}</a>
+                  </div>
+              </tab>
+          </tabset>
+        </div>
+
+    </div>
+</div>
+<!-- / tab -->

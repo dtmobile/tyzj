@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body">
+        <table ng-table="news_list" class="table table-hover ">
+            <caption class="font24b padb10">新闻列表</caption>
+            <thead></thead>
+            <tbody>
+                <tr class="row" ng-repeat="news in $data">
+                    <!-- <td ng-bind="$index+1">1</td> -->
+                    <td class="col-md-2">
+                        <img ng-src="{{news.image}}" err-src="uploadfile/news/news1.png" />
+                    </td>
+                    <td class="col-md-8 ">
+                        <a class="cursorpt c8e9" ng-click="open_news_view(news.id)" target="_blank">
+                            <div class="font24">{{news.title}}</div>
+                            <div class="font14 padt10">{{ news.viceTitle | characters:400 : breakOnWord }}</div>
+                            <div class="font14 padt10">{{news.createDate}}</div>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

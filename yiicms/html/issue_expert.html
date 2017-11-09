@@ -1,0 +1,17 @@
+<div>
+    <p>编委会</p>
+    <ul class="list-inline">
+        <li class="font14">主 编：</li>
+        <li ng-repeat="zbname in issue_zb"> <a class="c9 font14">{{zbname}}</a></li>
+    </ul>
+
+    <ul class="list-inline ">
+        <li class="font14">副 主 编：</li>
+        <li ng-repeat="fzbname in issue_fzb"> <a class="c9 font14">{{fzbname}}</a></li>
+    </ul>
+
+    <div class="block font14 padt3 padb3">编 委：（按姓氏笔画排序）：</div>
+    <ul class="list-inline ">
+        <li ng-repeat="bw in issue_bw"> <a class="c9 font14">{{bw}}</a></li>
+    </ul>
+</div>

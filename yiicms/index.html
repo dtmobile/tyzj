@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>国家体育总局体育科学研究所-科技书刊部</title>
+    <!--<title>bootstrap...</title>-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/ty.png">
+    <!-- <link href="lib/video-5.02.css" rel="stylesheet"> -->
+<!--    <link href="lib/font-awesome.min.css" rel="stylesheet">-->
+<!--    <link href="lib/jquery.booklet.latest.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/main.css">
+<!--    <link rel="stylesheet" href="css/common.css">-->
+    <link rel="stylesheet" href="css/style.css">
+    <link href="lib/video-js.min.css" rel="stylesheet">
+
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="lib/angular-1.2.32/angular.min.js"></script>
+    <script src="lib/angular-1.2.32/angular-route.min.js"></script>
+    <script src="lib/angular-resource.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+<!--    <script src="lib/ui-bootstrap-0.12.0.min.js"></script>-->
+    <script src="lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="lib/confirm.js" ></script>
+    <script src="js/directives/ngJsonExploer/angular-json-explorer.js"></script>
+    <link href="lib/summernote/0.8.2/summernote.css" rel="stylesheet">
+    <script src="lib/summernote/0.8.2/summernote.js"></script>
+    <!-- <script src="lib/angular-summernote.js"></script> -->
+    <script src="lib/angular-summernote.min.js"></script>
+    <script src="lib/angular-file-upload-2.4.1/angular-file-upload.js"></script>
+
+    <link rel="stylesheet" href="lib/ng-table.min.css">
+    <script src="lib/ng-table.min.js"></script>
+
+    <script src="lib/truncate.js"></script>
+    <link href="lib/video-5.02.css" rel="stylesheet">
+    <script type="text/javascript" src="lib/video-5.02.js"></script>
+	<link href="lib/bootstrap.min.css" rel="stylesheet">
+
+    <script>
+        $(function() {
+
+            Confirm.init('sm');
+        });
+
+    </script>
+<!--    <link rel="stylesheet" type="text/css" media="screen" href="js/directives/ngJsonExploer/angular-json-explorer.css" />-->
+    <style type="text/css">
+        body {
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .navbar-nav>li>a:hover,
+        .navbar-nav>li>a:focus {
+            color: #fff;
+            background-color: #0aa0f6;
+        }
+    </style>
+</head>
+
+<body ng-app="Bird">
+    <header class="header">
+        <a href=""><img src="img/logo.png" class="resp-img"></a>
+        <ul class="navlayout float-r padt30 padr180">
+            <li> <a class="c9" href="javascript:void(0);" onclick="SetHome(this,window.location);">设为主页</a></li>
+            <lable class="splitter c9">|</lable>
+            <li><a class="c9" href="javascript:void(0);" onclick="AddFavorite(document.title, window.location)">添加到收藏夹</a></li>
+        </ul>
+
+    </header>
+    <div class=" navigation  flex-column flex-between ">
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="flex-column flex-middle {{item.path == current_path ? 'active':''}}{{item.has_child == 1 ? 'dropdown open' : ''}}" ng-repeat="item in paths">
+                    <a ng-href="{{item.path}}" class="navtab flex-row flex-middle font18b cf">{{item.name}}
+                        </a>
+                </li>
+                <li>
+                    <input class="search" ng-model="senior_searc_keys" type="text" placeholder="请输入要搜索的期刊标题或关键字" ng-init="senior_searc_keys=''" />
+                </li>
+                <li>
+                    <a ng-click="open_senior_serarch_view(senior_searc_keys)" class="navtab flex-row flex-middle font18b cf cursorpt">高级搜索
+                        </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div ng-view></div>
+    <script src="js/CiCommonFunc.js" async="async"></script>
+    <script src="js/Index.js" async="async"></script>
+    <script src="js/ExpertView.js" async="async"></script>
+    <script src="js/SeniorSearch.js" async="async"></script>
+    <script src="js/Question.js" async="async"></script>
+    <script src="js/PaperView.js" async="async"></script>
+    <script src="js/ToolDownload.js" async="async"></script>
+    <script src="js/NewsList.js" async="async"></script>
+    <script src="js/NewsView.js" async="async"></script>
+    <script src="js/OnlineBook.js" async="async"></script>
+    <script src="js/OnlineBookList.js" async="async"></script>
+    <script src="js/OnlineBookView.js" async="async"></script>
+    <script src="js/NewsManager.js" async="async"></script>
+    <script src="js/ArticleManager.js" async="async"></script>
+    <script src="js/OnAboutUs.js" async="async"></script>
+
+    <script>
+        var app = angular.module("Bird", ['ngTable', 'ngResource',"summernote", "ngRoute", "ui.bootstrap", "ngJsonExplorer","truncate","angularFileUpload"]);
+
+        app.config(['$routeProvider',
+            function($routeProvider) {
+                $routeProvider.
+                when('/', {
+                    templateUrl: 'html/index.html',
+                    controller: 'Index'
+                }).when('/question', {
+                    templateUrl: 'html/question.html',
+                    controller: 'Question'
+                }).when('/paperview', {
+                    templateUrl: 'html/paperview.html',
+                    controller: 'PaperView'
+                }).when('/expertview', {
+                    templateUrl: 'html/expertview.html',
+                    controller: 'ExpertView'
+                }).when('/tooldownload', {
+                    templateUrl: 'html/tooldownload.html',
+                    controller: 'ToolDownload'
+                }).when('/senior_search', {
+                    templateUrl: 'html/senior_search.html',
+                    controller: 'SeniorSearch'
+                }).when('/news_list', {
+                    templateUrl: 'html/news_list.html',
+                    controller: 'NewsList'
+                }).when('/news_view', {
+                    templateUrl: 'html/news_view.html',
+                    controller: 'NewsView'
+                }).when('/onlinebook', {
+                    templateUrl: 'html/onlinebook.html',
+                    controller: 'OnlineBook'
+                }).when('/onlinebook_view', {
+                    templateUrl: 'html/onlinebookView.html',
+                    controller: 'OnlineBookView'
+                }).when('/aboutus', {
+                    templateUrl: 'html/aboutus.html',
+                    controller: 'OnAboutUs'
+                }).when('/newslist', {
+                    templateUrl: 'html/newslist.html',
+                    controller: 'NewsList'
+                }).when('/onlinebooklist', {
+                    templateUrl: 'html/onlinebooklist.html',
+                    controller: 'OnLineBookList'
+                }).when('/newsmanager', {
+                    templateUrl: 'html/NewsManager.html',
+                    controller: 'NewsManager'
+                }).when('/articlemanager', {
+                    templateUrl: 'html/articleManager.html',
+                    controller: 'ArticleManager'
+                }).otherwise({
+                    redirectTo: '/'
+                });
+
+
+
+            }
+        ]).directive('ngThumb', ['$window', function($window) {
+                    var helper = {
+                        support: !!($window.FileReader && $window.CanvasRenderingContext2D),
+                        isFile: function(item) {
+                            return angular.isObject(item) && item instanceof $window.File;
+                        },
+                        isImage: function(file) {
+                            var type =  '|' + file.type.slice(file.type.lastIndexOf('/') + 1) + '|';
+                            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+                        }
+                    };
+
+                    return {
+                        restrict: 'A',
+                        template: '<canvas/>',
+                        link: function(scope, element, attributes) {
+                            if (!helper.support) return;
+
+                            var params = scope.$eval(attributes.ngThumb);
+
+                            if (!helper.isFile(params.file)) return;
+                            if (!helper.isImage(params.file)) return;
+
+                            var canvas = element.find('canvas');
+                            var reader = new FileReader();
+
+                            reader.onload = onLoadFile;
+                            reader.readAsDataURL(params.file);
+
+                            function onLoadFile(event) {
+                                var img = new Image();
+                                img.onload = onLoadImage;
+                                img.src = event.target.result;
+                            }
+
+                            function onLoadImage() {
+                                var width = params.width || this.width / this.height * params.height;
+                                var height = params.height || this.height / this.width * params.width;
+                                canvas.attr({ width: width, height: height });
+                                canvas[0].getContext('2d').drawImage(this, 0, 0, width, height);
+                            }
+                        }
+                    };
+                }]);;
+
+        app.run(['$rootScope', '$location', '$anchorScroll', '$routeParams', '$http', 'NgTableParams','FileUploader', function($rootScope, $location, $anchorScroll, $routeParams, $http, NgTableParams,FileUploader) {
+            $rootScope.paths = [{
+                "name": "首页",
+                "path": "#/"
+            }, {
+                "name": "部门介绍",
+                "path": "#/aboutus"
+            }, {
+                "name": "专家风采",
+                "path": "#/expertview"
+            }, {
+                "name": "新闻列表",
+                "path": "#/newslist"
+            }, {
+                "name": "在线阅读",
+                "path": "#/onlinebooklist"
+            }, {
+                "name": "交流互动",
+                "path": "#/question"
+            }, {
+                "name": "工具下载",
+                "path": "#/tooldownload"
+            }, ];
+
+            var url = "index.php?r=index/VisitInfo";
+            $http.get(url).success(function(data) {
+                $rootScope.visit_count = data.visit_count;
+
+            });
+
+            $rootScope.open_senior_serarch_view = function(search_key) {
+                    window.location.href = "#/senior_search?keywords=" + search_key;
+                }
+                //when the route is changed scroll to the proper element.
+            $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+
+                $rootScope.current_path = "#" + ($location.path());
+
+                $location.hash($routeParams.scrollTo);
+                $anchorScroll();
+
+
+                $rootScope.loc = encodeURIComponent(location.href);
+            });
+
+        }]);
+
+        app.directive('errSrc', function() {
+            return {
+                link: function(scope, element, attrs) {
+                    element.bind('error', function() {
+                        if (attrs.src != attrs.errSrc) {
+                            attrs.$set('src', attrs.errSrc);
+                        }
+                    });
+                }
+            }
+        });
+
+
+    </script>
+    <script src="lib/jquery-ui-1.10.4.min.js" async="async"></script>
+<!--    <script src="lib/jquery.easing.1.3.js"></script>-->
+    <div class="container-fluid cooperationtab">
+        <div class="row padt60 marginlr15">
+            <div class="col-md-4 col-md-offset-1 flex-row flex-middle">
+                <div class="font18 cf">
+                    <p class="cursorpt">相关链接</p>
+                    <ul class="navlayout">
+                        <li><a class="whitea cf" target="_blank" href="http://www.sport.gov.cn">国家体育总局</a></li>
+                        <li>
+                            <lable class="padlr10 cf">|</lable>
+                        </li>
+                        <li><a class="whitea cf" target="_blank" href="http://www.gapp.gov.cn/cms/html/21/index.html">新闻出版总署</a></li>
+                    </ul>
+
+
+                    <ul class="navlayout">
+                        <li><a class="whitea cf" target="_blank" href="http://www.moe.edu.cn/">教育部</a></li>
+                        <li>
+                            <lable class="padlr10 cf">|</lable>
+                        </li>
+                        <li> <a class="whitea cf" target="_blank" href="http://www.cast.org.cn/">中国科协技术协会</a></li>
+                    </ul>
+
+                    <ul class="navlayout">
+                        <li><a class="whitea cf" target="_blank" href="http://www.ciss.cn/">国家体育总局科研所</a></li>
+                        <lable class="padlr10 cf">|</lable>
+                        <li><a class="whitea cf" target="_blank" href="http://stxb1959.com/">上海体育学院学报</a></li>
+                    </ul>
+
+                    <ul class="navlayout">
+                        <li><a class="whitea cf" target="_blank" href="http://www.chinatyxk.com/">体育学刊</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row marginlr15 text-center">
+                    <div class="col-md-3 col-md-offset-1">
+                        <img src="img/wx1.png" class="resp-img">
+                        <p class="cf padt6 font18">微信</p>
+                    </div>
+                    <div class="col-md-3 col-md-offset-1">
+                        <img src="img/wx1.png" class="resp-img">
+                        <p class="cf padt6 font18">微信</p>
+                    </div>
+                    <div class="col-md-3 col-md-offset-1">
+                        <img src="img/wx1.png" class="resp-img">
+                        <p class="cf padt6 font18">微信</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row marginlr15 padt60">
+            <div class="col-md-4 col-md-offset-1 flex-row flex-middle">
+                
+                <span class="font14 padlf3 c8e9">国家体育总局体育科学研究所</span>
+                <span class="font14 padlf3 c8e9">电话：010-67181293 / 87182588 / 87182589 / 87182590</span>
+                <span class="font14 padlf3 c8e9">地址：北京体育馆路11号 邮编：100061 Email: bjb@ciss.cn</span>
+            </div>
+            <div class="float-r padt20 padr100">
+                <span class="font14 padr100 cf">访问总数 : {{visit_count}}</span>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        //设为首页
+        function SetHome(obj, url) {
+            try {
+                obj.style.behavior = 'url(#default#homepage)';
+                obj.setHomePage(url);
+            } catch (e) {
+                if (window.netscape) {
+                    try {
+                        netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+                    } catch (e) {
+                        alert("抱歉，此操作被浏览器拒绝！\n\n请在浏览器地址栏输入“about:config”并回车然后将[signed.applets.codebase_principal_support]设置为'true'");
+                    }
+                } else {
+                    alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将【" + url + "】设置为首页。");
+                }
+            }
+        }
+
+        //收藏本站
+        function AddFavorite(title, url) {
+            try {
+                window.external.addFavorite(url, title);
+            } catch (e) {
+                try {
+                    window.sidebar.addPanel(title, url, "");
+                } catch (e) {
+                    alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请进入新网站后使用Ctrl+D进行添加");
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

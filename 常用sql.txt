@@ -1,0 +1,17 @@
+#select articleID from t_attachment group by articleID having count(1) > 1
+#SELECT id, name, summary, publshDate FROM `t_issue` `t` WHERE periodicalId=2 ORDER BY id DESC LIMIT 1
+
+#SELECT * FROM t_article WHERE keyword like '%</p>%'
+#update t_article set keyword=replace(keyword,'&nbsp;','')
+#update t_article set keyword=replace(keyword,'<p>','')
+#update t_article set keyword=replace(keyword,'</p>','')
+
+
+#SELECT * FROM t_article WHERE summary like '%</p>%'
+#update t_article set summary=replace(summary,'&nbsp;','')
+#update t_article set summary=replace(summary,'<p>','')
+#update t_article set summary=replace(summary,'</p>','')
+
+#update t_article set summary_en=replace(summary_en,'&nbsp;','')
+#update t_article set summary_en=replace(summary_en,'<p>','')
+#update t_article set summary_en=replace(summary_en,'</p>','')

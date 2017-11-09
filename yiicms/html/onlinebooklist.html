@@ -1,0 +1,56 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body">
+        <tabset class="tab-container" ng-model="tabset">
+            <tab heading="体育科学" ng-click="tabset=1">
+                <table ng-table="kexueIssues" class="table table-hover  table-responsive  ">
+                    <thead>
+                        <!--<th style="text-align:center;width:10%">编号</th>-->
+                        <!--<th style="text-align:center;width:60%">标题</th>-->
+                        <!--<th style="text-align:center;width:30%">出版日期</th>-->
+                    </thead>
+                    <tbody></tbody>
+
+                    <tr class="row" ng-repeat="item in $data">
+                        <!--<td style="text-align:center;" ng-bind="$index+1">1</td>-->
+                        <td class="col-md-2 text-center">
+                            <img ng-src="{{item.picPath}}" err-src="img/book1.png">
+                        </td>
+                        <td class="col-md-8">
+                            <a class="cursorpt c8e9" ng-click="open_issue_view(item.id)">
+                                <div class="font24">{{item.name}}</div>
+                                <summernote config="options" class="myIssueSummary" airMode ng-model="item['desciption']" on-init="inint_sn()"></summernote>
+                                <div class="font14 padt10">{{item.publshDate}}</div>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </tab>
+            <tab heading="中国体育科技" ng-click="tabset=2">
+                <table ng-table="kejiIssues" class="table table-hover table-responsive">
+                    <thead>
+                        <!--<th style="text-align:center;width:10%">编号</th>-->
+                        <!--<th style="text-align:center;width:60%">标题</th>-->
+                        <!--<th style="text-align:center;width:30%">出版日期</th>-->
+                    </thead>
+                    <tbody></tbody>
+
+                    <tr class="row" ng-repeat="item in $data">
+                        <!--<td style="text-align:center;" ng-bind="$index+1">1</td>-->
+                        <td class="col-md-2 text-center">
+                            <img ng-src="{{item.picPath}}" err-src="img/book1.png">
+                        </td>
+                        <td class="col-md-8">
+                            <a class="cursorpt c8e9" ng-click="open_issue_view(item.id)">
+                                <div class="font24">{{item.name}}</div>
+                                <summernote config="options" class="myIssueSummary" airMode ng-model="item['desciption']" on-init="inint_sn()"></summernote>
+                                <div class="font14 padt10">{{item.publshDate}}</div>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </tab>
+        </tabset>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div>
+    <div class="row">
+        <div class="col-md-5">
+            <span>指定学科</span>
+        </div>
+        <div class="col-md-7">
+            <select ng-model="search_type" class="form-control" ng-options="item.type as item.name for item in magazineTypes">
+                <option value="">请选择</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <span>作者</span>
+        </div>
+        <div class="col-md-7">
+            <input type="label" class="form-control" ng-model="search_author_name"> </input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <span>作者单位</span>
+        </div>
+        <div class="col-md-7">
+            <input type="label" class="form-control" ng-model="search_author_company"> </input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <span>题目</span>
+        </div>
+        <div class="col-md-7">
+            <input type="label" class="form-control" ng-model="search_name"> </input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <span>摘要</span>
+        </div>
+        <div class="col-md-7">
+            <input type="label" class="form-control" ng-model="search_summary"> </input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <span>关键词</span>
+        </div>
+        <div class="col-md-7">
+            <input type="label" class="form-control" ng-model="search_keywords"> </input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <span>分类号|PACS</span>
+        </div>
+        <div class="col-md-7">
+            <input type="label" class="form-control" ng-model="search_pacs"> </input>
+        </div>
+    </div>
+    <div class="col-md-1 ">
+        <button class="btn btn-primary " type="button" ng-click="commit_search()">提交搜索</button>
+    </div>
+</div>

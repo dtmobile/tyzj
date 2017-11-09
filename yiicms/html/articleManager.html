@@ -1,0 +1,86 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body row">
+        <!--<tabset class="tab-container" ng-model="tabset">-->
+        <!--<tab heading="新闻管理" ng-click=" tabset=2">-->
+        <div ng-include="'html/dialog/issueDetailDialog.html'"></div>
+        <div ng-include="'html/dialog/articleDetailDialog.html'"></div>
+
+
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1">
+                <select ng-model="models.selectedPeriodicalId" class="form-control" required
+                        ng-options="item.id as item.name for item in models.periodicalTypes"
+                        ng-change="period_selected_change()">
+                    <option value="">请选择要编辑的期刊类型</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <select ng-model="models.selectedIssueId" class="form-control" required
+                        ng-options="item.id as item.name for item in models.issueList"
+                        ng-change="issue_selected_change()">
+                    <!--<option value="">请选择要编辑的期数</option>-->
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <button class="btn btn-success fa fa-info-circle" type="button" data-toggle="modal"
+                        data-target="#issueAddDialog" popover="添加新期刊" popover-trigger="mouseenter">添加新期刊
+                </button>
+                <!--<button class="btn btn-warning fa fa-info-circle"  models.selectedIssueId!=0type="button" data-toggle="modal" ng-if="models.selectedIssueId!=0" ng-click="modifyIssueClick()"-->
+                        <!--data-target="#issueAddDialog" popover="修改期刊" popover-trigger="mouseenter">修改期刊-->
+                <!--</button>-->
+                <button class="btn btn-danger fa fa-info-circle" ng-if="models.selectedIssueId!=0" type="button"  ng-click="deleteIssueClick()" popover="删除期刊" popover-trigger="mouseenter">删除期刊
+                </button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-offset-1">
+                <button class="  col-md-10 btn btn-primary fa fa-info-circle " type="button"
+                        ng-if="models.selectedIssueId!=0"
+                        ng-click="showNewArticleDialog()" data-toggle="modal" data-target="#articleDetailDialog"
+                        popover="添加新文章"
+                        popover-trigger="mouseenter">添加新文章
+                </button>
+            </div>
+
+        </div>
+        <table ng-table="models.article_list" class="table table-hover ">
+            <caption class="font24b padb10">文章列表</caption>
+            <thead></thead>
+            <tbody>
+            <tr class="row" ng-repeat="article in $data">
+                <!-- <td ng-bind="$index+1">1</td> -->
+                <td class="col-md-1" title="'ID'">
+                    {{article.ID}}
+                </td>
+                <td class="col-md-3" title="'标题'">
+                    {{article.name}}
+                </td>
+                <td class="col-md-5" title="'作者'">
+                    {{article.author}}
+                </td>
+                <td class="col-md-1" title="'操作'">
+                    <button class="btn btn-danger fa fa-info-circle" type="button" ng-click="delete_article(article)">删除
+                    </button>
+                    <!--<button class="btn btn-success fa fa-info-circle" type="button" ng-click="modify_article(article)"-->
+                            <!--data-toggle="modal" data-target="#newsDetailDialog" popover="修改新闻内容"-->
+                            <!--popover-trigger="mouseenter">修改-->
+                    <!--</button>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!--</tab>-->
+        <!--<tab heading="期刊管理" ng-click=" tabset=1">-->
+
+        <!--</tab>-->
+        <!--</tabset>-->
+
+    </div>
+</div>

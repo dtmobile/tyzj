@@ -1,0 +1,84 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body">
+        <div class="col-md-3 padt30 col-md-offset-1">
+            <div class="padt20 minh300 text-center">
+                <img ng-src="{{tiyukexue.image}}" class="resp-img" />
+            </div>
+
+            <!--
+            <div class="padt30">
+                <ul id="mytab" class="nav nav-pills">
+                    <li class="active"><a data-target="#summary" data-toggle="tab">{{tiyukexue.title}}简介</a></li>
+                    <li><a class="c9 font16" data-target="#references" data-toggle="tab">{{tiyukexue.viceTitle}}简介</a></li>
+
+                    <li class="active"><a data-target="#summary" data-toggle="tab">{{tiyukeji.title}}简介</a></li>
+                    <li><a class="c9 font16" data-target="#references" data-toggle="tab">{{tiyukeji.viceTitle}}简介</a></li>
+                </ul>
+            </div>
+-->
+            <div class="padt30">
+                <ul id="mytab" class="nav nav-pills">
+                    <li class="active font16"><a data-target="#summary" data-toggle="tab">{{tiyukexue.title}}简介</a></li>
+                    <li class="font16"><a data-target="#references" data-toggle="tab">{{tiyukeji.title}}简介</a></li>
+                </ul>
+                <div class="tab-content padt10">
+                    <div class="tab-pane active" id="summary"><a class="c9 font16" >{{tiyukexue.viceTitle}}简介</a></div>
+                    <div class="tab-pane marginl10" id="references"><a class="c9 font16" >{{tiyukeji.viceTitle}}简介</a></div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col-md-7   padl60 padr60  minh550 cf7">
+            <div class="font30b padt20">编委会</div>
+            <!--            <hr class="margin0 margint10 marginb10">-->
+            <div class="grayline margint10 marginb10"></div>
+            <div>
+                <ul class=" padt3">
+                    <li class="font16">{{tiyukexue.title}}</li>
+                </ul>
+
+                <ul class="list-inline" >
+                    <li class="font16">主 编：</li>
+                    <li ng-repeat="zbname in tiyukexue.zb"> <a class="c9 font16">{{zbname}}</a></li>
+                </ul>
+
+                <ul class="list-inline ">
+                    <li class="font16">副 主 编：</li>
+                    <li class="font16" ng-repeat="fzbname in tiyukexue.fzb"> <a class="c9 font16">{{fzbname}}</a></li>
+                </ul>
+
+                <div class="block font16 padt3 padb3">编 委：（按姓氏笔画排序）：</div>
+                <ul class="list-inline ">
+                    <li class="font16" ng-repeat="bwname in tiyukexue.bw"> <a class="c9 font16">{{bwname}}</a></li>
+                </ul>
+            </div>
+
+            <!--            <hr class="margin0 margint10 marginb10">-->
+            <div class="grayline margint10 marginb10"></div>
+
+            <div>
+                <ul class="padt3">
+                    <li class="font16">{{tiyukeji.title}}</li>
+                </ul>
+                <ul class="list-inline" ng-repeat="zbname in tiyukeji.zb">
+                    <li class="font16">主 编：</li>
+                    <li> <a class="c9 font16">{{zbname}}</a></li>
+                </ul>
+
+                <ul class=" list-inline">
+                    <li class="font16">副 主 编：</li>
+                    <li class="font16" ng-repeat="fzbname in tiyukeji.fzb"> <a class="c9 font16">{{fzbname}}</a></li>
+                </ul>
+
+                <div class="block font16 padt3 padb3">编 委：（按姓氏笔画排序）：</div>
+                <ul class="list-inline">
+                    <li class="font16" ng-repeat="bw in tiyukeji.bw"> <a class="c9 font16">{{bw}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

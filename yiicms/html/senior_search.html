@@ -1,0 +1,141 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body">
+        <div class="  hcenter ">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="col-md-4">
+                        <p class="font18b">高级搜索</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-offset-2">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-8 ">
+                        <button class="btn btn-primary form-control" type="button" ng-click="commit_search()">提交搜索</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class=" col-md-10 col-md-offset-1">
+                    <div class="grayline margint10"></div>
+                </div>
+            </div>
+
+
+            <div class="row padt10">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="col-md-4">
+                        <span>指定学科</span>
+                    </div>
+                    <div class="col-md-8">
+                        <select ng-model="search_type" class="form-control" ng-options="item.type as item.name for item in magazineTypes">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-4">
+                        <span>作者</span>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="label" class="form-control" ng-model="search_author_name" placeholder="请输入作者名称,多个作者用,号分割"> </input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row padt10">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="col-md-4">
+                        <span>作者单位</span>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="label" class="form-control" ng-model="search_author_company" placeholder="请输入作者单位,多个单位用,号分割"> </input>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-4">
+                        <span>题目</span>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="label" class="form-control" ng-model="search_name" class="form-control" placeholder="请输入文章题目"> </input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row padt10">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="col-md-4">
+                        <span>摘要</span>
+                    </div>
+                    <div class="col-md-8 ">
+                        <input type="label" class="form-control" ng-model="search_summary" placeholder="请输入文章摘要"> </input>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-4">
+                        <span>关键词</span>
+                    </div>
+                    <div class="col-md-8 ">
+                        <input type="label" class="form-control" ng-model="search_keywords" placeholder="请输入关键词,多个关键词用,分割"> </input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row padt10">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="col-md-4">
+                        <span>分类号|PACS</span>
+                    </div>
+                    <div class="col-md-8 ">
+                        <input type="label" class="form-control" ng-model="search_pacs" placeholder="请输入分类号|PACS"> </input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row margint10">
+                <div class=" col-md-10 col-md-offset-1">
+                    <div class="grayline "></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row hcenter">
+        <div class="col-md-10 col-md-offset-1">
+            <div>
+                <table ng-table="search_results" class="table table-striped ">
+                    <caption class="font24b padb10">搜索结果</caption>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>题目</th>
+                            <th>作者</th>
+                            <th>出版日期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in $data">
+                            <td class="width10p" ng-bind="$index+1">1</td>
+                            <td class="width50p">
+                                <a ng-click="open_article_view(item.ID,item.issueId)">{{item.name}}</a>
+                            </td>
+                            <td class="width20p">
+                                {{item.author}}
+                            </td>
+
+                            <td class="width20p">
+                                {{item.publshDate}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

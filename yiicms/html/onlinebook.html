@@ -1,0 +1,99 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body row">
+        <div class="col-md-2 col-md-offset-1 padt10">
+            <div class="text-center">
+                <img ng-src="{{issue_image}}" class="resp-img">
+            </div>
+            <div class="padt10">
+                <div id="summernote_issue_summary"></div>
+            </div>
+            <div class="padt60">
+                <div ng-include="'html/issue_expert.html'"></div>
+            </div>
+        </div>
+        <div class="col-md-8 cf7 pad30">
+            <div class="h60 padl10 font30b">本期目录</div>
+            <div class="padl10">
+               <div class="grayline  "></div>
+                <p id="issue_summary" class=" margint10 font16">
+                </p>
+            </div>
+
+            <table ng-table="issue_articles" class="table table-hover ">
+                <caption></caption>
+                <thead></thead>
+                <tbody>
+                    <tr ng-repeat="article in $data">
+                        <td><a class=" font14 c666" ng-click="open_onlinebook_view(article.ID)" href="">{{article.name}}</a></td>
+                        <td>
+                            <p class="padt3 font13 cfc9">作者:{{article.author}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="row margint10">
+                <div class="col-md-1 minw120">
+                    <span>文章题目</span>
+                </div>
+                <div class="col-md-5 maxw260">
+                    <input type="label" class="form-control" ng-model="search_name"> </input>
+                </div>
+                <div class="col-md-1 minw120">
+                    <span>文章摘要</span>
+                </div>
+                <div class="col-md-5 maxw260">
+                    <input type="label" class="form-control" ng-model="search_summary"> </input>
+                </div>
+            </div>
+            <div class="row padt10">
+                <div class="col-md-1 minw120">
+                    <span>作者姓名</span>
+                </div>
+                <div class="col-md-5 maxw260">
+                    <input type="label" class="form-control font12" ng-model="search_author_name"> </input>
+                </div>
+                <div class="col-md-1 minw120">
+                    <span>作者单位</span>
+                </div>
+                <div class="col-md-5 maxw260">
+                    <input type="label" class="form-control" ng-model="search_author_company"> </input>
+                </div>
+            </div>
+            <div class="row padt10">
+                <div class="col-md-1 minw120">
+                    <span>发表日期起</span>
+                </div>
+                <div class="col-md-5 maxw260">
+                    <input type="label" class="form-control font12" ng-model="search_author_name"> </input>
+                </div>
+                <div class="col-md-1 minw120">
+                    <span>发表日期止</span>
+                </div>
+                <div class="col-md-5 maxw260">
+                    <input type="label" class="form-control" ng-model="search_author_company"> </input>
+                </div>
+            </div>
+
+            <div class="row margint10">
+                <div class="col-md-1 minw120">
+                    <span>关键词</span>
+                </div>
+                <div class="col-md-5 maxw260">
+                    <input type="label" class="form-control" ng-model="search_keywords"> </input>
+                </div>
+            </div>
+            <div class="grayline margint10 "></div>
+
+            <div class="row margint10">
+                <div class="col-md-12 ">
+                    <button class="btn btn-primary col-md-offset-7 col-md-3" class="form-control" type="button" ng-click="commit_search()">提交搜索</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

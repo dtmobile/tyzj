@@ -1,0 +1,170 @@
+<div class="modal fade" id="newsDetailDialog" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:95%;height:400px;">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <div ng-if="newsDetail.mode=='create'">
+                        添加新闻
+                    </div>
+                    <div ng-if="newsDetail.mode=='modify'">
+                        修改新闻
+                    </div>
+                </h4>
+            </div>
+            <form class="form-horizontal" role="form">
+                <div class="form-group" ng-if="newsDetail.id != 0">
+                    <label class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" ng-model="newsDetail.id" type="text" placeholder="新闻ID"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">新闻标题</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" ng-model="newsDetail.title" type="text" placeholder="该输入新闻标题">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        副标题
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" placeholder="该输入副标题" ng-model="newsDetail.viceTitle">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        新闻内容
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control" ng-model="newsDetail.content" type="text" placeholder="请输入新闻内容">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">英文标题</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" ng-model="newsDetail.title_en" type="text" placeholder="请输入英文标题">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        英文副标题
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" placeholder="请输入英文副标题"
+                               ng-model="newsDetail.viceTitle_en">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        英文内容
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" placeholder="该输入英文内容" ng-model="newsDetail.Content_en">
+                    </div>
+                </div>
+
+                <div class="form-group"  ng-if="newsDetail.createDate != ''">
+                    <label class="col-sm-2 control-label">
+                        编辑日期
+                    </label>
+                    <div class="col-sm-10">
+                        <input ng-disabled="true" class="form-control" type="text" ng-model="newsDetail.createDate"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        图片
+                    </label>
+                    <div class="col-sm-10">
+                        <div ng-if="newsDetail.mode =='modify'">
+                            <img ng-src="{{newsDetail.image}}" />
+                            <div>
+                                <a ng-click="newsDetail.imgReplaceShow=true">
+                                    <h3>替换图片</h3></a>
+                            </div>
+                        </div>
+
+                        <div ng-if="newsDetail.imgReplaceShow">
+                            <div class="row">
+                                <div class="form">
+                                    <input type="file" nv-file-select="" uploader="uploader" multiple/><br/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th width="50%">Name</th>
+                                        <th ng-show="uploader.isHTML5">Size</th>
+                                        <th ng-show="uploader.isHTML5">Progress</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="item in uploader.queue">
+                                        <td>
+                                            <strong>{{ item.file.name }}</strong>
+                                            <div ng-show="uploader.isHTML5"
+                                                 ng-thumb="{ file: item._file, height: 100 }"></div>
+                                        </td>
+                                        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }}
+                                            MB
+                                        </td>
+                                        <td ng-show="uploader.isHTML5">
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar"
+                                                     ng-style="{ 'width': item.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                            <span ng-show="item.isError"><i
+                                                    class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td nowrap>
+                                            <button type="button" class="btn btn-danger btn-xs"
+                                                    ng-click="item.remove()">
+                                                <span class="glyphicon glyphicon-trash"></span>删除
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+
+                    </label>
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-success btn-s form-control" ng-click="saveNewsDetail()">
+                            <span class="glyphicon glyphicon-upload"></span>保存
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+
+
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

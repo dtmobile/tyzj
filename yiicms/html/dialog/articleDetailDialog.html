@@ -1,0 +1,179 @@
+<div class="modal fade" id="articleDetailDialog" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:95%;height:400px;">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    添加新文章
+                </h4>
+            </div>
+            <form class="form-horizontal" role="form">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">所属期刊编号</label>
+                            <div class="col-sm-10">
+                                <label class="form-control" ng-bind="models.selectedIssueId" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">所属期刊</label>
+                            <div class="col-sm-10">
+                                <label class="form-control" ng-bind="models.newArticleParentIssueName" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">题目</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleName" type="text"
+                                       placeholder="该输入题目">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">英文题目</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleNameEn" type="text"
+                                       placeholder="该输入英文题目">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">副标题</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleViceTitle" type="text"
+                                       placeholder="该输入副标题">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">关键字</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleKeyWord" type="text"
+                                       placeholder="该输入关键字">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">英文关键字</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleKeyWordEn" type="text"
+                                       placeholder="该输入英文关键字">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">摘要</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleSummary" type="text"
+                                       placeholder="该输入摘要">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">英文摘要</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleSummaryEn" type="text"
+                                       placeholder="该输入英文摘要">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">内容</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleContent" type="text"
+                                       placeholder="该输入内容">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">作者</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleAuthor" type="text"
+                                       placeholder="该输入作者,多个作者用,隔开">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">作者单位</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleAuthorIntroduction" type="text"
+                                       placeholder="该输入作者单位">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">分类号</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticlefenleihao" type="text"
+                                       placeholder="该输入书刊分类号">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">引用</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleQuery1" type="text"
+                                       placeholder="该输入引用">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">英文内容</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" ng-model="models.newArticleContentEn" type="text"
+                                       placeholder="该输入英文内容">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="saveArticleContent()" ng-disabled="models.newArticleParentIssueName == ''" >
+                    <span class="glyphicon glyphicon-upload"></span>保存
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+
+
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

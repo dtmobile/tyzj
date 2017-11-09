@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body">
+       
+        <table class="table table-hover ">
+            <caption class="font24b padb10">常见问题</caption>
+            <thead></thead>
+            <tbody>
+                <tr class="row" ng-repeat="item in question_list">
+                    <td class="col-md-8  cf7">
+                        <p class="font14b padlr30">{{$index+1}}.{{item['question']}}</p>
+                        <!--   <p >{{item['answer']}}</p> -->
+                        <div class="padlr30 ">
+                            <summernote config="options" class="myanswer" airMode ng-model="item['answer']" on-init="inint_sn()"></summernote>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,142 @@
+<style>
+    .bggray {
+        background-color: gray;
+    }
+
+</style>
+<div class="panel panel-default">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+                <div class="row padl10">
+                    <div ng-include="'html/issue_expert.html'"></div>
+                </div>
+                <div class="row padl10">
+                    <h3>高级搜索</h3>
+                    <div class="row padt6">
+                        <div class="col-md-4">
+                            <span>指定学科</span>
+                        </div>
+                        <div class="col-md-7">
+                            <select ng-model="search_type" class="form-control" ng-options="item.type as item.name for item in magazineTypes">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row padt6">
+                        <div class="col-md-4">
+                            <span>作者</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="label" class="form-control ellipsis" ng-model="search_author_name" placeholder="请输入作者名称,多个作者用,号分割"> </input>
+                        </div>
+                    </div>
+                    <div class="row padt6">
+                        <div class="col-md-4">
+                            <span>作者单位</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="label" class="form-control ellipsis" ng-model="search_author_company" placeholder="请输入作者单位,多个单位用,号分割"> </input>
+                        </div>
+                    </div>
+                    <div class="row padt6">
+                        <div class="col-md-4">
+                            <span>题目</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="label" class="form-control ellipsis" ng-model="search_name" placeholder="请输入文章题目"> </input>
+                        </div>
+                    </div>
+                    <div class="row padt6">
+                        <div class="col-md-4">
+                            <span>摘要</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="label" class="form-control ellipsis" ng-model="search_summary" placeholder="请输入文章摘要"> </input>
+                        </div>
+                    </div>
+                    <div class="row padt6">
+                        <div class="col-md-4">
+                            <span>关键词</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="label" class="form-control ellipsis" ng-model="search_keywords" placeholder="请输入关键词,多个关键词用,分割"> </input>
+                        </div>
+                    </div>
+                    <div class="row padt6">
+                        <div class="col-md-4">
+                            <span>分类号|PACS</span>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="label" class="form-control ellipsis" ng-model="search_pacs" placeholder="请输入分类号|PACS"> </input>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center  padt10">
+                        <button class="btn btn-primary col-md-7 col-md-offset-4" type="button" ng-click="commit_search()">提交搜索</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 cf7">
+                <div class="minh200">
+                    <div class="row col-md-12">
+                        <div class="container  maxw800">
+                            <h2><strong>{{name}}</strong></h2>
+                        </div>
+                        <div class="container maxw800">
+                            <p class="text-cente"><strong>{{name_en}}</strong></p>
+                        </div>
+                        <div class="container maxw800">
+                            <p class="text-left"><strong>{{author}}</strong></p>
+                        </div>
+                        <div class="container maxw800">
+                            <p class="text-left"><strong>{{authorIntroduction}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <tabset class="tab-container pad20" ng-model="tabset">
+                        <tab heading="摘要" ng-click="tabset=1">
+                            <div class="minh300">
+                                <div class="row pad10">
+                                    <p><strong>摘要：</strong>{{authorIntroduction}}</p>
+                                </div>
+                                <div class="row">
+                                    <p><strong>关键字：</strong>
+                                    <div id="summernote_keyword"></div>
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p><strong>Abstract：</strong>
+                                    <div id="summernote_summary_en"></div>
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p><strong>Keyword： </strong>
+                                        <div id="summernote_keyword_en"></div>
+                                    </p>
+                                </div>
+                            </div>
+                        </tab>
+                        <tab heading="参考文献" ng-click="tabset=2">
+                            <div class="row pad10 minh300">
+                                <p><strong>参考文献： </strong>{{query1}}</p>
+                            </div>
+                        </tab>
+                        <tab heading="全文下载" ng-click="tabset=3">
+                            <div class="minh300">
+                                <div class="row pad10">
+                                    <p><strong>附相关文档下载：</strong>{{query1}}</p>
+                                </div>
+                                <div class="row" ng-repeat="attach in attach_file_list">
+                                    <a ng-href="{{attach.bigFilename}}">{{attach.filename}}</a>
+                                </div>
+                            </div>
+                        </tab>
+                    </tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
