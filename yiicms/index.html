@@ -61,23 +61,26 @@
 </head>
 
 <body ng-app="Bird">
-    <header class="header">
-        <a href=""><img src="img/logo.png" class="resp-img"></a>
-        <ul class="navlayout float-r padt30 padr180">
-            <li> <a class="c9" href="javascript:void(0);" onclick="SetHome(this,window.location);">设为主页</a></li>
+  <div class="header row flex-column flex-middle flex-between">
+  <div class="col-md-8"><a href=""><img src="img/logo1.png" class="resp-img"></a></div>
+  <div class="col-md-2 flex-row flex-center">
+      <div class="flex-column flex-center">
+          <a class="c9" href="javascript:void(0);" onclick="SetHome(this,window.location);">设为主页</a>
             <lable class="splitter c9">|</lable>
-            <li><a class="c9" href="javascript:void(0);" onclick="AddFavorite(document.title, window.location)">添加到收藏夹</a></li>
-        </ul>
-
-    </header>
+          <a class="c9" href="javascript:void(0);" onclick="AddFavorite(document.title, window.location)">添加到收藏夹</a>
+      </div>
+      <div class="margint10"><img src="img/weixindaohang.png" class="resp-img"></div>
+      <lable class="splitter margint5 c9">扫描关注微信公众号</lable>
+   </div> 
+   </div>
     <div class=" navigation  flex-column flex-between ">
         <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav  ">
                 <li class="flex-column flex-middle {{item.path == current_path ? 'active':''}}{{item.has_child == 1 ? 'dropdown open' : ''}}" ng-repeat="item in paths">
                     <a ng-href="{{item.path}}" class="navtab flex-row flex-middle font18b cf">{{item.name}}
                         </a>
                 </li>
-                <li>
+        <li class="padl470">
                     <input class="search" ng-model="senior_searc_keys" type="text" placeholder="请输入要搜索的期刊标题或关键字" ng-init="senior_searc_keys=''" />
                 </li>
                 <li>
@@ -200,7 +203,10 @@
                             function onLoadImage() {
                                 var width = params.width || this.width / this.height * params.height;
                                 var height = params.height || this.height / this.width * params.width;
-                                canvas.attr({ width: width, height: height });
+            canvas.attr({
+              width: width,
+              height: height
+            });
                                 canvas[0].getContext('2d').drawImage(this, 0, 0, width, height);
                             }
                         }
