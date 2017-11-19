@@ -57,12 +57,43 @@
 </div>
 <div class="">
   <div class="title flex-column flex-center flex-middle">
-      <p class="font26b">
-        <<中国体育科技>>当前目录</p>
-    </div>
+    <p class="font26b">
+      <<体育科学>>当前目录</p>
+  </div>
   <div class="line">
   </div>
-  <div class="sportstab padt30">
+  <div class="sciencetab container-fluid padt30">
+    <div class="col-md-1 padt60 float-l cursorpt">
+      <img src="img/arrow-prev.png" alt="" ng-show="kexue_start_index >= current_artical_page_size" ng-click="get_prev_articals(1)">
+    </div>
+    <div class="col-md-10">
+      <div ng-repeat="kexueItem in kexue_current_articals">
+        <div class="col-md-3  flex-row flex-center" ng-show="kexueItem" ng-click="open_artical_view(kexueItem.id,1)" style="cursor:pointer;">
+          <div class="width86p ">
+            <div class="item flex-row">
+              <a><img width="100%" height="100%" ng-src="{{kexueItem.image}}" /></a>
+              <p class="font16b padt35">{{kexueItem.name}}</p>
+              <div class="font14b ">{{kexueItem.author}}</div>
+              <p class="font14b ">阅读量：{{kexueItem.visitNum}}</p>
+              <p class="font14 ">{{kexueItem.summary | characters:60 : breakOnWord}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 padt60 float-r cursorpt">
+      <img src="img/arrow-next.png" alt="" ng-show="(kexue_start_index + current_artical_page_size) < kexue_current_articals_total" ng-click="get_next_articals(1)">
+    </div>
+  </div>
+</div>
+<div class="sportstab">
+  <div class="title flex-column flex-center flex-middle">
+    <p class="font26b">
+      <<中国体育科技>>当前目录</p>
+  </div>
+  <div class="line">
+  </div>
+  <div class=" padt45">
     <div class="container-fluid">
       <div class="col-md-1 padt60 float-l cursorpt">
         <img src="img/arrow-prev.png" alt="" ng-show="keji_start_index >= current_artical_page_size" ng-click="get_prev_articals(2)">
@@ -72,8 +103,8 @@
           <div class="col-md-3  flex-row flex-center" ng-show="kejiItem" ng-click="open_artical_view(kejiItem.id,2)" style="cursor:pointer;">
             <div class="width86p ">
               <div class="item flex-row ">
-                <a><img ng-src="{{kejiItem.image}}" /></a>
-                <p class="font16b">{{kejiItem.name}}</p>
+                <a><img  width="100%" height="100%"  ng-src="{{kejiItem.image}}" /></a>
+                <p class="font16b padt35">{{kejiItem.name}}</p>
                 <div class="font14b">{{kejiItem.author}}</div>
                 <p class="font14b">阅读量：{{kejiItem.visitNum}}</p>
                 <p class="font14">{{kejiItem.summary | characters:80 : breakOnWord}}</p>
@@ -88,45 +119,14 @@
     </div>
   </div>
 </div>
-<div class="sciencetab">
-  <div class="title flex-column flex-center flex-middle">
-    <p class="font26b">
-      <<体育科学>>当前目录</p>
-  </div>
-  <div class="line">
-  </div>
-  <div class="container-fluid padt30">
-    <div class="col-md-1 padt60 float-l cursorpt">
-      <img src="img/arrow-prev.png" alt="" ng-show="kexue_start_index >= current_artical_page_size" ng-click="get_prev_articals(1)">
-    </div>
-    <div class="col-md-10">
-      <div ng-repeat="kexueItem in kexue_current_articals">
-        <div class="col-md-3  flex-row flex-center" ng-show="kexueItem" ng-click="open_artical_view(kexueItem.id,1)" style="cursor:pointer;">
-          <div class="width86p ">
-            <div class="item flex-row">
-              <a><img ng-src="{{kexueItem.image}}" /></a>
-              <p class="font16b ">{{kexueItem.name}}</p>
-              <div class="font14b ">{{kexueItem.author}}</div>
-              <p class="font14b ">阅读量：{{kexueItem.visitNum}}</p>
-              <p class="font14 ">{{kexueItem.summary | characters:60 : breakOnWord}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-1 padt60 float-r cursorpt">
-      <img src="img/arrow-next.png" alt="" ng-show="(kexue_start_index + current_artical_page_size) < kexue_current_articals_total" ng-click="get_next_articals(1)">
-    </div>
-  </div>
-</div>
 <div class="videotab">
   <div class="h90 flex-row flex-center flex-middle">
     <p class="font30 cf">视频板块</p>
   </div>
-  <div class="flex-row flex-center flex-middle">
-    <p class="videoline"></p>
+  <div class="flex-row col-md-10 col-md-offset-1  flex-center flex-middle">
+    <p class="videoline width93p"></p>
   </div>
-  <div class="container-fluid  padt25">
+  <div class="container-fluid  padt35">
     <!-- <div class="col-md-1 padt60 float-l cursorpt">
         <img src="img/arrow-prev.png" alt="" ng-show="kexue_start_index >= current_artical_page_size" ng-click="get_prev_articals(1)">
     </div> -->
@@ -208,7 +208,7 @@
         <div class="col-md-9 marginl-15">
           <div class="font18b">中国体育科技 {{issue.name}}</div>
           <div class="blackline"></div>
-          <div class="font14 padt6 gray">{{issue.summary}}</div>
+          <div class="font14 padt6 gray">{{issue.desciption | characters:100 : breakOnWord }}</div>
         </div>
       </div>
       <div class="col-md-4 padt40" ng-repeat="issue in kexueList">
@@ -218,7 +218,7 @@
         <div class="col-md-9 marginl-15 ">
           <div class="font18b">体育科学 {{issue.name}}</div>
           <div class="blackline"></div>
-          <div class="font14 padt6 gray">{{ issue.summary | characters:100 : breakOnWord }}</div>
+          <div class="font14 padt6 gray">{{ issue.desciption | characters:100 : breakOnWord }}</div>
         </div>
       </div>
     </div>
