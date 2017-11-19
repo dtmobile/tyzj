@@ -247,19 +247,17 @@ class IssueController extends Controller
      */
     public function actionGetIssues($start, $count)
     {
-
-        $issueArray = array();
         $kejiListArray = array();
         $kexueListArray = array();
 
         $periodicalId = 2;//科技
-        $kejiList = TIssue::model()->findAll(array('select' => array('id', 'name', 'picPath', 'summary'),
+        $kejiList = TIssue::model()->findAll(array('select' => array('id', 'name', 'picPath', 'summary', 'desciption'),
             'condition' => 'periodicalId=' . $periodicalId,
             'order' => 'id desc',
             'offset' => 0,
             'limit' => 4));
         $periodicalId = 1;//科学
-        $kexueList = TIssue::model()->findAll(array('select' => array('id', 'name', 'picPath', 'summary'),
+        $kexueList = TIssue::model()->findAll(array('select' => array('id', 'name', 'picPath', 'summary', 'desciption'),
             'condition' => 'periodicalId=' . $periodicalId,
             'order' => 'id desc',
             'offset' => 0,
@@ -270,44 +268,49 @@ class IssueController extends Controller
             $issue['name'] = $kejiList[0]->name;
             $issue['summary'] = $kejiList[0]->summary;
             $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
-            array_push($issueArray, $issue);
+            $issue['desciption'] = $kejiList[0]->desciption;
+            array_push($kejiListArray, $issue);
 
             $issue['id'] = $kejiList[1]->id;
             $issue['name'] = $kejiList[1]->name;
             $issue['summary'] = $kejiList[1]->summary;
             $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
-            array_push($issueArray, $issue);
+            $issue['desciption'] = $kejiList[1]->desciption;
+            array_push($kejiListArray, $issue);
 
             $issue['id'] = $kejiList[2]->id;
             $issue['name'] = $kejiList[2]->name;
             $issue['summary'] = $kejiList[2]->summary;
             $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
-            array_push($issueArray, $issue);
+            $issue['desciption'] = $kejiList[2]->desciption;
+            array_push($kejiListArray, $issue);
 
             $issue['id'] = $kexueList[0]->id;
             $issue['name'] = $kexueList[0]->name;
             $issue['summary'] = $kexueList[0]->summary;
             $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
+            $issue['desciption'] = $kexueList[0]->desciption;
             array_push($kexueListArray, $issue);
 
             $issue['id'] = $kexueList[1]->id;
             $issue['name'] = $kexueList[1]->name;
             $issue['summary'] = $kexueList[1]->summary;
             $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
+            $issue['desciption'] = $kexueList[1]->desciption;
             array_push($kexueListArray, $issue);
 
             $issue['id'] = $kexueList[2]->id;
             $issue['name'] = $kexueList[2]->name;
             $issue['summary'] = $kexueList[2]->summary;
             $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
+            $issue['desciption'] = $kexueList[2]->desciption;
             array_push($kexueListArray, $issue);
         // }
 
         $result = array('error_no' => 0,
             'error_msg' => '',
-            'kejiList' => $kejiList,
             'kexueList' => $kexueListArray,
-            'issue_list' => $issueArray);
+            'issue_list' => $kejiListArray);
         echo json_encode($result);
     }
 
