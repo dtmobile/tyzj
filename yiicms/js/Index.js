@@ -25,22 +25,21 @@ function Index($scope, $http){
     $scope.issue_start_index=0;
     $scope.issue_page_size=0;
     $scope.issues = new Array();
+  $scope.kejiList = new Array();
+  $scope.kexueList = new Array();
     
     $scope.top_news = new Array();
 
-    function CutSummary(artical_list)
-    {
+  function CutSummary(artical_list, len) {
         for (var i = artical_list.length - 1; i >= 0; i--) {
-            if(artical_list[i].summary.length>40)
-            {
-                artical_list[i].summary=artical_list[i].summary.substring(0,40)+'...' ;
+      if (artical_list[i].summary.length > len) {
+        artical_list[i].summary = artical_list[i].summary.substring(0, len) + '...';
             }
         };
 
     }
 
-    function initial()
-    {
+  function initial() {
         var url = "index.php?r=News/getTopNews";
         $http.get(url).success(function(data){
             $scope.top_news = data.top_news;
@@ -57,58 +56,57 @@ function Index($scope, $http){
 
         var url = "index.php?r=Article/getCurrentArticle&periodicalId=2"+"&start="+$scope.keji_start_index+"&count="+$scope.current_artical_page_size;
         $http.get(url).success(function(data){
-            CutSummary(data.artical_list);
+      //CutSummary(data.artical_list, 40);
             $scope.keji_current_articals = data.artical_list;
             
         });
 
         var url = "index.php?r=Article/getCurrentArticle&periodicalId=1"+"&start="+$scope.kexue_start_index+"&count="+$scope.current_artical_page_size;
         $http.get(url).success(function(data){
-            CutSummary(data.artical_list);
+      //CutSummary(data.artical_list, 40);
             $scope.kexue_current_articals = data.artical_list;
         });
 
         var url = "index.php?r=Issue/GetIssues&start="+$scope.issue_start_index+"&count="+$scope.issue_page_size;
         $http.get(url).success(function(data){
+      CutSummary(data.issue_list, 180);
+      CutSummary(data.kexueList, 180);
             $scope.issues = data.issue_list;
+      $scope.kexueList = data.kexueList;
         });
     }
 
     initial();
 
     function kejiReload(isNext){
-        if(isNext)
-        {
+    if (isNext) {
             //获取下一页
             $scope.keji_start_index += $scope.current_artical_page_size;
-        }else
-        {
+    } else {
             //获取上一页
             $scope.keji_start_index -= $scope.current_artical_page_size;
         }
 
         var url = "index.php?r=Article/getCurrentArticle&periodicalId=2"+"&start="+$scope.keji_start_index+"&count="+$scope.current_artical_page_size;
         $http.get(url).success(function(data){
-            CutSummary(data.artical_list);
+      //CutSummary(data.artical_list, 40);
         	$scope.keji_current_articals = data.artical_list;
         	
         });
     }
 
     function kexueReload(isNext){
-        if(isNext)
-        {
+    if (isNext) {
             //获取下一页
             $scope.kexue_start_index += $scope.current_artical_page_size;
-        }else
-        {
+    } else {
             //获取上一页
             $scope.kexue_start_index -= $scope.current_artical_page_size;
         }
 
         var url = "index.php?r=Article/getCurrentArticle&periodicalId=1"+"&start="+$scope.kexue_start_index+"&count="+$scope.current_artical_page_size
         $http.get(url).success(function(data){
-            CutSummary(data.artical_list);
+      CutSummary(data.artical_list, 40);
         	$scope.kexue_current_articals = data.artical_list;
         });
     }
@@ -142,38 +140,31 @@ function Index($scope, $http){
 
 
     $scope.get_next_articals = function(type) {
-        if(type == 2)
-        {
+    if (type == 2) {
           kejiReload(true);
-        } else if(type == 1)
-        {
+    } else if (type == 1) {
  			kexueReload(true);
         }  
     }
 
     $scope.get_prev_articals = function(type) {
-        if(type == 2)
-        {
+    if (type == 2) {
           kejiReload(false);
-        } else if(type == 1)
-        {
+    } else if (type == 1) {
  			kexueReload(false);
         }  
     }
     
 
     $scope.open_artical_view = function(articleId,type) {
-        if(typeof(articleId) == "undefined" || typeof(type) == "undefined" )
-        {
+    if (typeof(articleId) == "undefined" || typeof(type) == "undefined") {
            return;
         }
 
         var issueId=0;
-        if(type==1)
-        {
+    if (type == 1) {
             issueId = $scope.kexue_current_issueId;
-        }else if (type==2) 
-        {
+    } else if (type == 2) {
             issueId = $scope.keji_current_issueId;
         }else{
             issueId = $scope.keji_current_issueId;
@@ -184,8 +175,7 @@ function Index($scope, $http){
 
 
     $scope.open_news_view = function(newsid) {
-        if(newsid == "undefined")
-        {
+    if (newsid == "undefined") {
            return;
         }
 
@@ -193,8 +183,7 @@ function Index($scope, $http){
     };
 
     $scope.open_issue_view = function(issueId) {
-        if(issueId == "undefined")
-        {
+    if (issueId == "undefined") {
            return;
         }
 

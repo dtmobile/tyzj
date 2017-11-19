@@ -1,116 +1,123 @@
 <style>
-.affix{top:10px;}
+  .affix {
+    top: 10px;
+  }
+
+  .marginl-15 {
+    /*margin-right: 0px;*/
+    margin-left: -15px;
+  }
 </style>
 <div class="norticetab">
-    <div data-spy="affix" data-offset-top="150" class="nortice z-index2">
-        <div class="row padb10">
-            <div class="font18b cf cursorpt">公告通知</div>
-        </div>
-        <div class="row whiteline">
-        </div>
-        <div class="padt20 row font12b" ng-repeat="news in top_news">
-            <a class="  cf anormal" ng-click="open_news_view(news.id)" target="_blank">
-                <div class="row ">
-                    <div class="col-md-8 ">
-                        <span class="font13 underline cursorpt">{{news.title}}</span>
-                    </div>
-                    <div class="col-md-4 ">
-                        <span class="font13 padr10 cursorpt">{{news.createDate}}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
+  <div data-spy="affix" data-offset-top="150" class="nortice z-index2">
+    <div class="row padb10">
+      <div class="font18b cf cursorpt">公告通知</div>
     </div>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="img/carousel1.png" alt="First slide">
+    <div class="row whiteline">
+    </div>
+    <div class="padt20 row font12b" ng-repeat="news in top_news">
+      <a class="  cf anormal" ng-click="open_news_view(news.id)" target="_blank">
+        <div class="row ">
+          <div class="col-md-8 ">
+            <span class="font13 underline cursorpt">{{news.title}}</span>
+          </div>
+          <div class="col-md-4 ">
+            <span class="font13 padr10 cursorpt">{{news.createDate}}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="img/carousel1.png" alt="First slide">
+      </div>
+      <div class="item">
+        <img src="img/carousel2.png" alt="Second slide">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="subjecttab  flex-column flex-center flex-middle">
+  <div class="col-md-10 ">
+    <div class="col-md-3 flex-column flex-center">
+      <a target="_blank" href="http://www.cisszgty.com:8080/journalx_cn/expertLogOn.action?mag_Id=1"><img src="img/sub1.png" class="cursorpt"/></a>
+    </div>
+    <div class="col-md-3 flex-column flex-center">
+      <a target="_blank" href="http://www.cisszgty.com:8080/journalx_cn/editorLogOn.action?mag_Id=1"><img src="img/sub2.png" class="cursorpt"/></a>
+    </div>
+    <div class="col-md-3 flex-column flex-center">
+      <a target="_blank" href="http://www.cisszgty.com:8080/journalx_cn/editorInChiefLogOn.action?mag_Id=1"><img src="img/sub3.png" class="cursorpt"/></a>
+    </div>
+    <div class="col-md-3 flex-column flex-center">
+      <a target="_blank" href="http://www.cisszgty.com:8080/journalx_cn/authorLogOn.action?mag_Id=1"><img src="img/sub4.png" class="cursorpt"/></a>
+    </div>
+  </div>
+</div>
+<div class="">
+  <div class="title flex-column flex-center flex-middle">
+      <p class="font26b">
+        <<中国体育科技>>当前目录</p>
+    </div>
+  <div class="line">
+  </div>
+  <div class="sportstab padt30">
+    <div class="container-fluid">
+      <div class="col-md-1 padt60 float-l cursorpt">
+        <img src="img/arrow-prev.png" alt="" ng-show="keji_start_index >= current_artical_page_size" ng-click="get_prev_articals(2)">
+      </div>
+      <div class="col-md-10">
+        <div ng-repeat="kejiItem in keji_current_articals">
+          <div class="col-md-3  flex-row flex-center" ng-show="kejiItem" ng-click="open_artical_view(kejiItem.id,2)" style="cursor:pointer;">
+            <div class="width86p ">
+              <div class="item flex-row ">
+                <a><img ng-src="{{kejiItem.image}}" /></a>
+                <p class="font16b">{{kejiItem.name}}</p>
+                <div class="font14b">{{kejiItem.author}}</div>
+                <p class="font14b">阅读量：{{kejiItem.visitNum}}</p>
+                <p class="font14">{{kejiItem.summary | characters:80 : breakOnWord}}</p>
+              </div>
             </div>
-            <div class="item">
-                <img src="img/carousel2.png" alt="Second slide">
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-md-1 padt60 float-r cursorpt">
+        <img src="img/arrow-next.png" alt="" ng-show="(keji_start_index + current_artical_page_size) < keji_current_articals_total" ng-click="get_next_articals(2)">
+      </div>
     </div>
-</div>
-<div class="row ">
-    <div class=" col-md-12 subjecttab flex-column flex-center flex-middle">
-        <div class="">
-            <a class="sub1" target="_blank" href="http://www.cisszgty.com:8080/journalx_cn/expertLogOn.action?mag_Id=1"></a>
-        </div>
-        <div class="padl50">
-            <a class="sub2" target="_blank" href="http://www.cisszgty.com:8080/journalx_cn/editorLogOn.action?mag_Id=1"></a>
-        </div>
-        <div class="padl50">
-            <a class="sub3" target="_blank" href="http://www.cisszgty.com:8080/journalx_cn/editorInChiefLogOn.action?mag_Id=1"></a>
-        </div>
-        <div class="padl50">
-            <a class="sub4" target="_blank" href="http://www.cisszgty.com:8080/journalx_cn/authorLogOn.action?mag_Id=1"></a>
-        </div>
-    </div>
-</div>
-<div class="row marginlr15">
-    <div class="title flex-column flex-center flex-middle">
-        <p class="font26b">
-            <<中国体育科技>>当前目录</p>
-    </div>
-</div>
-<div class="line">
-</div>
-<div class="sportstab padt30">
-    <div class="row marginlr15">
-        <div class="col-md-1 padt60 float-l cursorpt">
-            <img src="img/arrow-prev.png" alt="" ng-show="keji_start_index >= current_artical_page_size" ng-click="get_prev_articals(2)">
-        </div>
-        <div class="col-md-10 row">
-            <div ng-repeat="kejiItem in keji_current_articals">
-                <div class="col-md-3" ng-show="kejiItem" ng-click="open_artical_view(kejiItem.id,2)" style="cursor:pointer;">
-                    <div class="item flex-row ">
-                        <a><img ng-src="{{kejiItem.image}}" /></a>
-                        <p class="font16b">{{kejiItem.name}}</p>
-                        <p class="font14b">{{kejiItem.author}}</p>
-						<p class="font14b">阅读量：{{kejiItem.visitNum}}</p>
-                        <p class="font14">{{kejiItem.summary}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-1 padt60 float-r cursorpt">
-            <img src="img/arrow-next.png" alt="" ng-show="(keji_start_index + current_artical_page_size) < keji_current_articals_total" ng-click="get_next_articals(2)">
-        </div>
-    </div>
+  </div>
 </div>
 <div class="sciencetab">
-    <div class="row marginlr15">
-        <div class="title flex-column flex-center flex-middle">
-            <p class="font26b">
-                <<体育科学>>当前目录</p>
-        </div>
+  <div class="title flex-column flex-center flex-middle">
+    <p class="font26b">
+      <<体育科学>>当前目录</p>
+  </div>
+  <div class="line">
+  </div>
+  <div class="container-fluid padt30">
+    <div class="col-md-1 padt60 float-l cursorpt">
+      <img src="img/arrow-prev.png" alt="" ng-show="kexue_start_index >= current_artical_page_size" ng-click="get_prev_articals(1)">
     </div>
-    <div class="line">
-    </div>
-
-    <div class="row marginlr15 padt30">
-        <div class="col-md-1 padt60 float-l cursorpt">
-            <img src="img/arrow-prev.png" alt="" ng-show="kexue_start_index >= current_artical_page_size" ng-click="get_prev_articals(1)">
-        </div>
-        <div class="col-md-10 row">
-            <div ng-repeat="kexueItem in kexue_current_articals">
-                <div class="col-md-3" ng-show="kexueItem" ng-click="open_artical_view(kexueItem.id,1)" style="cursor:pointer;">
-                    <div class="item flex-row ">
-                        <a><img ng-src="{{kexueItem.image}}" /></a>
-                        <p class="font16b">{{kexueItem.name}}</p>
-                        <p class="font14b">{{kexueItem.author}}</p>
-						<p class="font14b">阅读量：{{kexueItem.visitNum}}</p>
-                        <p class="font14">{{kexueItem.summary}}</p>
-                    </div>
-                </div>
+    <div class="col-md-10">
+      <div ng-repeat="kexueItem in kexue_current_articals">
+        <div class="col-md-3  flex-row flex-center" ng-show="kexueItem" ng-click="open_artical_view(kexueItem.id,1)" style="cursor:pointer;">
+          <div class="width86p ">
+            <div class="item flex-row">
+              <a><img ng-src="{{kexueItem.image}}" /></a>
+              <p class="font16b ">{{kexueItem.name}}</p>
+              <div class="font14b ">{{kexueItem.author}}</div>
+              <p class="font14b ">阅读量：{{kexueItem.visitNum}}</p>
+              <p class="font14 ">{{kexueItem.summary | characters:60 : breakOnWord}}</p>
             </div>
-
+          </div>
         </div>
-        <div class="col-md-1 padt60 float-r cursorpt">
-            <img src="img/arrow-next.png" alt="" ng-show="(kexue_start_index + current_artical_page_size) < kexue_current_articals_total" ng-click="get_next_articals(1)">
-        </div>
+      </div>
     </div>
+    <div class="col-md-1 padt60 float-r cursorpt">
+      <img src="img/arrow-next.png" alt="" ng-show="(kexue_start_index + current_artical_page_size) < kexue_current_articals_total" ng-click="get_next_articals(1)">
+    </div>
+  </div>
 </div>
 <div class="videotab">
   <div class="h90 flex-row flex-center flex-middle">
@@ -119,14 +126,14 @@
   <div class="flex-row flex-center flex-middle">
     <p class="videoline"></p>
   </div>
-  <div class="row padt25">
+  <div class="container-fluid  padt25">
     <!-- <div class="col-md-1 padt60 float-l cursorpt">
         <img src="img/arrow-prev.png" alt="" ng-show="kexue_start_index >= current_artical_page_size" ng-click="get_prev_articals(1)">
     </div> -->
-    <div class="col-md-10 col-md-offset-1 row">
+    <div class="col-md-10  col-md-offset-1 flex-column flex-between">
       <div class="col-md-3 height360 flex-row flex-center">
-        <div class="width250">
-          <video id="example_video_1" class="video-js vjs-default-skin width250 height150" controls preload="none" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+        <div class="width86p">
+          <video id="example_video_1" class="video-js vjs-default-skin height150 " controls preload="none" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
             <source src="\yiicms\uploadfile\a.mp4" type="video/mp4">
             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
           </video>
@@ -137,9 +144,9 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 height360 flex-row flex-center">
-        <div class="width250">
-          <video id="example_video_1" class="video-js vjs-default-skin width250 height150" controls preload="none" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+      <div class="col-md-3  height360 flex-row flex-center ">
+        <div class="width86p">
+          <video id="example_video_1" class="video-js vjs-default-skin height150 " controls preload="none" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
             <source src="\yiicms\uploadfile\a.mp4" type="video/mp4">
             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
           </video>
@@ -151,9 +158,9 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 height360 flex-row flex-center">
-        <div class="width250">
-          <video id="example_video_1" class="video-js vjs-default-skin width250 height150" controls preload="none" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+      <div class="col-md-3  height360 flex-row flex-center">
+        <div class="width86p">
+          <video id="example_video_1" class="video-js vjs-default-skin height150 " controls preload="none" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
             <source src="\yiicms\uploadfile\a.mp4" type="video/mp4">
             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
           </video>
@@ -166,8 +173,8 @@
         </div>
       </div>
       <div class="col-md-3 height360 flex-row flex-center">
-        <div class="width250">
-          <video id="example_video_1" class="video-js vjs-default-skin width250 height150" controls preload="none" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+        <div class="width86p">
+          <video id="example_video_1" class="video-js vjs-default-skin  height150" controls preload="none" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
             <source src="\yiicms\uploadfile\a.mp4" type="video/mp4">
             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
           </video>
@@ -185,29 +192,38 @@
     </div> -->
   </div>
 </div>
-<div class="onlinetab padt40">
-    <div class="title flex-column flex-center ">
-        <p class="font26b">
-            期刊在线阅读</p>
-    </div>
-    <div class="line">
-    </div>
-    <div class="row marginlr15 padt30">
-        <div class=" col-md-10 col-md-offset-1 row">
-            <div class="col-md-3 text-center" ng-repeat="issue in issues">
-                <a ng-click="open_issue_view(issue.id)" target="_blank"><img ng-src="{{issue.image}}" class="resp-img cursorpt" /></a>
-                <p class="padt10 font18b">{{issue.name}}</p>
-            </div>
+<div class="onlinetab  padt40">
+  <div class="title flex-column flex-center ">
+    <p class="font26b">
+      期刊在线阅读</p>
+  </div>
+  <div class="line">
+  </div>
+  <div class="container-fluid">
+    <div class="col-md-10  col-md-offset-1 flex-column flex-center">
+      <div class="col-md-4 padt40" ng-repeat="issue in issues">
+        <div class="col-md-3">
+          <a ng-click="open_issue_view(issue.id)" target="_blank"><img ng-src="{{issue.image}}" class="resp-img cursorpt" /></a>
         </div>
-        <div class="col-md-1 text-center padt60 float-r cursorpt">
-            <a href="#/onlinebooklist">
-                <div class=" "><img class="resp-img cursorpt" src="img/arrow-next.png"></div>
-            </a>
-<!--            <p class="padt10 font18b">查看更多</p>-->
+        <div class="col-md-9 marginl-15">
+          <div class="font18b">中国体育科技 {{issue.name}}</div>
+          <div class="blackline"></div>
+          <div class="font14 padt6 gray">{{issue.summary}}</div>
         </div>
+      </div>
+      <div class="col-md-4 padt40" ng-repeat="issue in kexueList">
+        <div class="col-md-3">
+          <a ng-click="open_issue_view(issue.id)" target="_blank"><img ng-src="{{issue.image}}" class="resp-img cursorpt" /></a>
+        </div>
+        <div class="col-md-9 marginl-15 ">
+          <div class="font18b">体育科学 {{issue.name}}</div>
+          <div class="blackline"></div>
+          <div class="font14 padt6 gray">{{ issue.summary | characters:100 : breakOnWord }}</div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <script>
-    $('.carousel').carousel();
-
+  $('.carousel').carousel();
 </script>

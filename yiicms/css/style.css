@@ -37,6 +37,10 @@
 .cfc9{color: #999;}
 .c666{color: #666;}
 .cf7{background-color: #f7f7f7;}
+.red{background-color: red;}
+.blue{background-color: blue}
+.yellow{background-color: yellow}
+.green{background-color: green}
 
 .cursorpt{cursor: pointer;}
 .pad3{padding: 3px;}
@@ -157,6 +161,7 @@
 .width50p{width: 50%;}
 .width60p{width: 60%;}
 .width80p{width: 80%;}
+.width86p{width: 86%;}
 .width88p{width: 88%;}
 
 .bgred{background-color: red;}

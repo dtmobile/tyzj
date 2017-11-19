@@ -249,48 +249,64 @@ class IssueController extends Controller
     {
 
         $issueArray = array();
+        $kejiListArray = array();
+        $kexueListArray = array();
 
         $periodicalId = 2;//科技
         $kejiList = TIssue::model()->findAll(array('select' => array('id', 'name', 'picPath', 'summary'),
             'condition' => 'periodicalId=' . $periodicalId,
             'order' => 'id desc',
             'offset' => 0,
-            'limit' => 2));
+            'limit' => 4));
         $periodicalId = 1;//科学
         $kexueList = TIssue::model()->findAll(array('select' => array('id', 'name', 'picPath', 'summary'),
             'condition' => 'periodicalId=' . $periodicalId,
             'order' => 'id desc',
             'offset' => 0,
-            'limit' => 2));
+            'limit' => 4));
 
-        if (count($kejiList) >= 2 && count($kexueList) >= 2) {
+        // if (count($kejiList) >= 2 && count($kexueList) >= 2) {
             $issue['id'] = $kejiList[0]->id;
             $issue['name'] = $kejiList[0]->name;
             $issue['summary'] = $kejiList[0]->summary;
-            $issue['image'] = "img/book2.png";//$kejiList[0]->picPath;
-            array_push($issueArray, $issue);
-
-            $issue['id'] = $kexueList[0]->id;
-            $issue['name'] = $kexueList[0]->name;
-            $issue['summary'] = $kexueList[0]->summary;
-            $issue['image'] = "img/book1.png";//$kexueList[0]->picPath;
+            $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
             array_push($issueArray, $issue);
 
             $issue['id'] = $kejiList[1]->id;
             $issue['name'] = $kejiList[1]->name;
             $issue['summary'] = $kejiList[1]->summary;
-            $issue['image'] = "img/book2.png";//$kejiList[0]->picPath;
+            $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
             array_push($issueArray, $issue);
+
+            $issue['id'] = $kejiList[2]->id;
+            $issue['name'] = $kejiList[2]->name;
+            $issue['summary'] = $kejiList[2]->summary;
+            $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
+            array_push($issueArray, $issue);
+
+            $issue['id'] = $kexueList[0]->id;
+            $issue['name'] = $kexueList[0]->name;
+            $issue['summary'] = $kexueList[0]->summary;
+            $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
+            array_push($kexueListArray, $issue);
 
             $issue['id'] = $kexueList[1]->id;
             $issue['name'] = $kexueList[1]->name;
             $issue['summary'] = $kexueList[1]->summary;
-            $issue['image'] = "img/book1.png";//$kexueList[0]->picPath;
-            array_push($issueArray, $issue);
-        }
+            $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
+            array_push($kexueListArray, $issue);
+
+            $issue['id'] = $kexueList[2]->id;
+            $issue['name'] = $kexueList[2]->name;
+            $issue['summary'] = $kexueList[2]->summary;
+            $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
+            array_push($kexueListArray, $issue);
+        // }
 
         $result = array('error_no' => 0,
             'error_msg' => '',
+            'kejiList' => $kejiList,
+            'kexueList' => $kexueListArray,
             'issue_list' => $issueArray);
         echo json_encode($result);
     }

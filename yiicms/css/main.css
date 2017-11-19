@@ -62,15 +62,15 @@ p{padding: 0;}
 .subjecttab{height: 350px; width: 100%;}
 .sportstab{height: 450px; width: 100%; background: url(../img/tab.png) left top repeat;}
 .sciencetab{height: 450px;  width: 100%; background: url(../img/tab.png) left top repeat;}
-.onlinetab{height: 470px;  width: 100%; background: url(../img/tab.png) left top repeat;}
+.onlinetab{height: 500px;  width: 100%; background: url(../img/tab.png) left top repeat;}
 .videotab{height: 507px;  width: 100%; background: url(../img/videobg3.png) left top repeat;}
 .cooperationtab{height: 374px; width: 100%; background: url(../img/footers.png) left top repeat;}
 .footer{height: 275px; width: 100%; }
 
-.sub1{float: left;height: 140px; width: 300px; background: url(../img/sub1.png) left top no-repeat;}
-.sub2{float: left;height: 140px; width: 300px; background: url(../img/sub2.png) left top no-repeat;}
-.sub3{float: left;height: 140px; width: 290px; background: url(../img/sub3.png) left top no-repeat;}
-.sub4{float: left;height: 140px; width: 305px; background: url(../img/sub4.png) left top no-repeat;}
+/*.sub1{ background: url(../img/sub1.png) left top no-repeat;}
+.sub2{ background: url(../img/sub2.png) left top no-repeat;}
+.sub3{ background: url(../img/sub3.png) left top no-repeat;}
+.sub4{ background: url(../img/sub4.png) left top no-repeat;}*/
 
 .title{height: 50px;}
 .tabbody .item{width: 275px; height: 410px; padding: 0 10px; }
@@ -110,6 +110,7 @@ p{padding: 0;}
 .whitea:hover,.whitea:visited,.whitea:active{text-decoration-color: #fff !important; color: white;}
 
 .grayline{height: 1px;width: 100%; background-color: gray;}
+.blackline{height: 1px;width: 100%; background-color: black;}
 .line{height: 2px;width: 100%; background-color: #0885cc;}
 .whiteline{height: 2px;width: 100%; background-color: #fff;}
 .videoline{height: 2px;width: 1196px; background-color: #999;}
