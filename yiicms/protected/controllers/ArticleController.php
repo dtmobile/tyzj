@@ -233,6 +233,7 @@ class ArticleController extends Controller
         $articleItem->lockedFlag = 0;
         $articleItem->lockedBy = '';
         $articleItem->image = '';
+        $articleItem->visit_num = 0;
 
         $saveResult="";
         log::getInstance()->warning('prepare save article' . json_encode($articleItem));

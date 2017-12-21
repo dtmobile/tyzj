@@ -94,9 +94,9 @@ function NewsManager($scope, $http, NgTableParams, FileUploader) {
         var params = "params=" + JSON.stringify(params);
         $http.post(url, params).success(function (data, header, config, status) {
             if (data.error_no != 0) {
-                Confirm.show('保存文章', '保存失败' + data.error_msg);
+                Confirm.show('保存新闻', '保存失败' + data.error_msg);
             } else {
-                Confirm.show('保存文章', '保存成功');
+                Confirm.show('保存新闻', '保存成功');
                 getNewsList();
             }
         }).error(function (data, header, config, status) {
