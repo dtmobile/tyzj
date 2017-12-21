@@ -267,7 +267,7 @@ class ArticleController extends Controller
         foreach ($attachFiles as $item) {
             $attach['ID']=$item->ID;
             $attach['filename']=$item->filename;
-            $attach['bigFilename']='uploadfile/test.pdf';//$item->bigFilename;
+            $attach['bigFilename']=$item->bigFilename;//'uploadfile/test.pdf'
             array_push($attach_file_list,$attach);
         }
         return $attach_file_list;
