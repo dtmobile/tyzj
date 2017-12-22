@@ -97,8 +97,10 @@ class IssueController extends Controller
             }
         }
         $originFileName = $_FILES['file']['name'];
+        $newFileName = date("Y-m-d-H-i-s"). $originFileName;
+
         if (!empty($originFileName)) {
-            $filename = iconv("UTF-8", "gb2312", $imageFullPath . $originFileName);
+            $filename = iconv("UTF-8", "gb2312", $imageFullPath .$newFileName);
 //        log::getInstance()->warning('fileName: ' . $filename);
             if (file_exists($filename)) {
                 log::getInstance()->warning('file already exist:' . $filename);
@@ -111,10 +113,11 @@ class IssueController extends Controller
                 }
             }
 
-            if (!$this->cutImageSize(iconv("UTF-8", "gb2312", $imgPath . $originFileName))) {
+            $issueItem->picPath = $imgPath .$newFileName;
+            if (!$this->cutImageSize(iconv("UTF-8", "gb2312", $issueItem->picPath))) {
                 return $originFileName . "file cut fail";
             }
-            $issueItem->picPath = $imgPath . $originFileName;
+
         }
 
         $issueItem->createUser = 1;
@@ -144,8 +147,8 @@ class IssueController extends Controller
             return false;
         }
 
-        $width = 200;
-        $height = 300;
+        $width = 250;
+        $height = 200;
         $src = imagecreatefromstring(file_get_contents($imgPath));
         $des = imagecreatetruecolor($width, $height);
         imagecopyresampled($des, $src, 0, 0, 0, 0, $width, $height, imagesx($src), imagesy($src));
