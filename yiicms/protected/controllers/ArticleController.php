@@ -233,7 +233,7 @@ class ArticleController extends Controller
         $articleItem->lockedFlag = 0;
         $articleItem->lockedBy = '';
         $articleItem->image = '';
-        $articleItem->visit_num = 0;
+        $articleItem->visit_num = 957;
 
         $saveResult="";
         log::getInstance()->warning('prepare save article' . json_encode($articleItem));
@@ -321,9 +321,10 @@ class ArticleController extends Controller
             $artical['issueId']=$item->issueId;
             $artical['author']=$item->author;                    
             $artical['summary']=$item->summary;
+            $artical['image']=$item->image;
+            //            $artical['image']="img/item".rand(1,4).".png";
             $artical['visitNum']=$item->visit_num;
-            $artical['image']="img/item".rand(1,4).".png";//$item->img;
-            array_push($articalArray,$artical);           
+            array_push($articalArray,$artical);
         }
         
          
@@ -341,7 +342,7 @@ class ArticleController extends Controller
 	
 	protected function getArticalList($issueId,$start,$count)
 	{
-	    $articalList = TArticle::model()->findAll(array('select'=>array('ID','issueId','name','author','summary','visit_num'),
+	    $articalList = TArticle::model()->findAll(array('select'=>array('ID','issueId','name','author','summary','image','visit_num'),
 	                                               'condition' => 'issueId='.$issueId,
                                                    'order'=>'ID ASC',
 	                                               'offset'=>$start,

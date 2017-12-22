@@ -46,8 +46,7 @@ function Index($scope, $http){
         });
 
        var url = "index.php?r=Article/getCurrentArticleTotal";
-        $http.get(url).success(function(data){   
-
+        $http.get(url).success(function(data){
             $scope.kexue_current_issueId=data.kexue_current_issueId;
             $scope.keji_current_issueId=data.keji_current_issueId;
             $scope.kexue_current_articals_total=data.kexue_total;
@@ -104,7 +103,7 @@ function Index($scope, $http){
             $scope.kexue_start_index -= $scope.current_artical_page_size;
         }
 
-        var url = "index.php?r=Article/getCurrentArticle&periodicalId=1"+"&start="+$scope.kexue_start_index+"&count="+$scope.current_artical_page_size
+        var url = "index.php?r=Article/getCurrentArticle&periodicalId=1"+"&start="+$scope.kexue_start_index+"&count="+$scope.current_artical_page_size;
         $http.get(url).success(function(data){
       CutSummary(data.artical_list, 40);
         	$scope.kexue_current_articals = data.artical_list;
