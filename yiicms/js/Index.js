@@ -55,14 +55,14 @@ function Index($scope, $http){
 
         var url = "index.php?r=Article/getCurrentArticle&periodicalId=2"+"&start="+$scope.keji_start_index+"&count="+$scope.current_artical_page_size;
         $http.get(url).success(function(data){
-      //CutSummary(data.artical_list, 40);
+      CutSummary(data.artical_list, 80);
             $scope.keji_current_articals = data.artical_list;
             
         });
 
         var url = "index.php?r=Article/getCurrentArticle&periodicalId=1"+"&start="+$scope.kexue_start_index+"&count="+$scope.current_artical_page_size;
         $http.get(url).success(function(data){
-      //CutSummary(data.artical_list, 40);
+      CutSummary(data.artical_list, 80);
             $scope.kexue_current_articals = data.artical_list;
         });
 
@@ -88,7 +88,7 @@ function Index($scope, $http){
 
         var url = "index.php?r=Article/getCurrentArticle&periodicalId=2"+"&start="+$scope.keji_start_index+"&count="+$scope.current_artical_page_size;
         $http.get(url).success(function(data){
-      //CutSummary(data.artical_list, 40);
+      CutSummary(data.artical_list, 80);
         	$scope.keji_current_articals = data.artical_list;
         	
         });
@@ -105,7 +105,7 @@ function Index($scope, $http){
 
         var url = "index.php?r=Article/getCurrentArticle&periodicalId=1"+"&start="+$scope.kexue_start_index+"&count="+$scope.current_artical_page_size;
         $http.get(url).success(function(data){
-      CutSummary(data.artical_list, 40);
+      CutSummary(data.artical_list, 80);
         	$scope.kexue_current_articals = data.artical_list;
         });
     }

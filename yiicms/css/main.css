@@ -67,7 +67,7 @@ p{padding: 0;}
 .sportstab{height: 515px; max-height: 515px; width: 100%; background: url(../img/tab.png) left top repeat;}
 .sciencetab{height: 465px;  width: 100%; background: url(../img/tab.png) left top repeat;}
 .onlinetab{height: 500px;  width: 100%; background: url(../img/tab.png) left top repeat;}
-.videotab{height: 507px;  width: 100%; background: url(../img/videobg3.png) left top repeat;}
+.videotab{height: 507px;  width: 100%; background: url(../img/videobg3.png) left top repeat; background-size: cover;}
 .cooperationtab{height: 374px; width: 100%; background: url(../img/footers.png) left top repeat;}
 .footer{height: 275px; width: 100%; }
 
