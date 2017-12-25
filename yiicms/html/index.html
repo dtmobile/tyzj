@@ -77,7 +77,8 @@
               <p class="font16b padt35">{{kexueItem.name  | characters:35 : breakOnWord}}</p>
               <div class="font14b ">{{kexueItem.author | characters:20 : breakOnWord}}</div>
               <p class="font14b ">阅读量：{{kexueItem.visitNum}}</p>
-              <p class="font14 ">{{kexueItem.summary | characters:60 : breakOnWord}}</p>
+              <!-- <p class="font14 ">{{kexueItem.summary | characters:60 : breakOnWord}}</p> -->
+              <summernote config="options" class="myIssueSummary" airMode ng-model="kexueItem['summary']" on-init="inint_sn()"></summernote>
             </div>
           </div>
         </div>
@@ -111,7 +112,8 @@
                 <p class="font16b padt35">{{kejiItem.name | characters:35 : breakOnWord}}</p>
                 <div class="font14b">{{kejiItem.author | characters:20 : breakOnWord}}</div>
                 <p class="font14b">阅读量：{{kejiItem.visitNum}}</p>
-                <p class="font14">{{kejiItem.summary | characters:80 : breakOnWord}}</p>
+                <!-- <p class="font14">{{kejiItem.summary | characters:80 : breakOnWord}}</p> -->
+                <summernote config="options" class="myIssueSummary" airMode ng-model="kejiItem['summary']" on-init="inint_sn()"></summernote>
               </div>
             </div>
           </div>
