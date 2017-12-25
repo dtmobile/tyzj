@@ -215,7 +215,30 @@
         <div class="col-md-9 marginl-15 ">
           <div class="font18b">体育科学 {{issue.name}}</div>
           <div class="blackline"></div>
-          <div class="font14 padt6 gray">{{ issue.desciption | characters:100 : breakOnWord }}</div>
+          <!-- <div class="font14 padt6 gray">{{ issue.desciption | characters:100 : breakOnWord }}</div> -->
+          <div class="flex-row">
+            <tr class="row">
+                <td >
+                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article1.ID)">
+                        <div class="font14">{{issue.article1.name}}</div>
+                    </a>
+                </td>
+            </tr>
+            <tr class="row">
+                <td >
+                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article2.ID)">
+                        <div class="font14">{{issue.article2.name}}</div>
+                    </a>
+                </td>
+            </tr>
+            <tr class="row">
+                <td >
+                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article3.ID)">
+                        <div class="font14">{{issue.article3.name}}</div>
+                    </a>
+                </td>
+            </tr>
+          </div>
         </div>
       </div>
       <div class="col-md-4 padt40" ng-repeat="issue in issues">
@@ -225,7 +248,30 @@
         <div class="col-md-9 marginl-15">
           <div class="font18b">中国体育科技 {{issue.name}}</div>
           <div class="blackline"></div>
-          <div class="font14 padt6 gray">{{issue.desciption | characters:100 : breakOnWord }}</div>
+          <!-- <div class="font14 padt6 gray">{{issue.desciption | characters:100 : breakOnWord }}</div> -->
+          <div class="flex-row">
+            <tr class="row">
+                <td >
+                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article1.ID)">
+                        <div class="font14">{{issue.article1.name}}</div>
+                    </a>
+                </td>
+            </tr>
+            <tr class="row">
+                <td >
+                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article2.ID)">
+                        <div class="font14">{{issue.article2.name}}</div>
+                    </a>
+                </td>
+            </tr>
+            <tr class="row">
+                <td >
+                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article3.ID)">
+                        <div class="font14">{{issue.article3.name}}</div>
+                    </a>
+                </td>
+            </tr>
+          </div>
         </div>
       </div>
     </div>

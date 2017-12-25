@@ -73,8 +73,14 @@ function Index($scope, $http){
             $scope.issues = data.issue_list;
       $scope.kexueList = data.kexueList;
         });
+    $scope.open_onlinebook_view = function (articleId) {
+        if (articleId == "undefined") {
+            return;
     }
 
+        window.location.href = "#/onlinebook_view?articleId=" + articleId + "&issueId=" + $scope.issueId;
+    };
+  }
     initial();
 
     function kejiReload(isNext){

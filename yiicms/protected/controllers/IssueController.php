@@ -272,6 +272,25 @@ class IssueController extends Controller
             $issue['summary'] = $kejiList[0]->summary;
             $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
             $issue['desciption'] = $kejiList[0]->desciption;
+
+            $article1Array = array();
+            $articles = $this->getArticleByIssueId($kejiList[0]->id);
+            $i=0;
+            foreach ($articles as $item) {
+                $artical['ID'] = $item->ID;
+                $artical['name'] = $item->name;
+                // $artical['author'] = $item->author;
+                array_push($article1Array, $artical);
+                $i++;
+                if($i==3)
+                {
+                  break;
+                }
+            }
+            $issue['article1']=$article1Array[0];
+            $issue['article2']=$article1Array[1];
+            $issue['article3']=$article1Array[2];
+
             array_push($kejiListArray, $issue);
 
             $issue['id'] = $kejiList[1]->id;
@@ -279,6 +298,26 @@ class IssueController extends Controller
             $issue['summary'] = $kejiList[1]->summary;
             $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
             $issue['desciption'] = $kejiList[1]->desciption;
+
+            $article2Array = array();
+            $articles = $this->getArticleByIssueId($kejiList[1]->id);
+            $i=0;
+            foreach ($articles as $item) {
+                $artical['ID'] = $item->ID;
+                $artical['name'] = $item->name;
+                // $artical['author'] = $item->author;
+                array_push($article2Array, $artical);
+                $i++;
+                if($i==3)
+                {
+                  break;
+                }
+            }
+
+            $issue['article1']=$article2Array[0];
+            $issue['article2']=$article2Array[1];
+            $issue['article3']=$article2Array[2];
+
             array_push($kejiListArray, $issue);
 
             $issue['id'] = $kejiList[2]->id;
@@ -286,6 +325,24 @@ class IssueController extends Controller
             $issue['summary'] = $kejiList[2]->summary;
             $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
             $issue['desciption'] = $kejiList[2]->desciption;
+
+            $article3Array = array();
+            $articles = $this->getArticleByIssueId($kejiList[2]->id);
+            $i=0;
+            foreach ($articles as $item) {
+                $artical['ID'] = $item->ID;
+                $artical['name'] = $item->name;
+                // $artical['author'] = $item->author;
+                array_push($article3Array, $artical);
+                $i++;
+                if($i==3)
+                {
+                  break;
+                }
+            }
+            $issue['article1']=$article3Array[0];
+            $issue['article2']=$article3Array[1];
+            $issue['article3']=$article3Array[2];
             array_push($kejiListArray, $issue);
 
             $issue['id'] = $kexueList[0]->id;
@@ -293,6 +350,23 @@ class IssueController extends Controller
             $issue['summary'] = $kexueList[0]->summary;
             $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
             $issue['desciption'] = $kexueList[0]->desciption;
+            $KexuearticleArray1 = array();
+            $articles = $this->getArticleByIssueId($kexueList[0]->id);
+            $i=0;
+            foreach ($articles as $item) {
+                $artical['ID'] = $item->ID;
+                $artical['name'] = $item->name;
+                // $artical['author'] = $item->author;
+                array_push($KexuearticleArray1, $artical);
+                $i++;
+                if($i==3)
+                {
+                  break;
+                }
+            }
+            $issue['article1']=$KexuearticleArray1[0];
+            $issue['article2']=$KexuearticleArray1[1];
+            $issue['article3']=$KexuearticleArray1[2];
             array_push($kexueListArray, $issue);
 
             $issue['id'] = $kexueList[1]->id;
@@ -300,6 +374,23 @@ class IssueController extends Controller
             $issue['summary'] = $kexueList[1]->summary;
             $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
             $issue['desciption'] = $kexueList[1]->desciption;
+            $KexuearticleArray2 = array();
+            $articles = $this->getArticleByIssueId($kexueList[1]->id);
+            $i=0;
+            foreach ($articles as $item) {
+                $artical['ID'] = $item->ID;
+                $artical['name'] = $item->name;
+                // $artical['author'] = $item->author;
+                array_push($KexuearticleArray2, $artical);
+                $i++;
+                if($i==3)
+                {
+                  break;
+                }
+            }
+            $issue['article1']=$KexuearticleArray2[0];
+            $issue['article2']=$KexuearticleArray2[1];
+            $issue['article3']=$KexuearticleArray2[2];
             array_push($kexueListArray, $issue);
 
             $issue['id'] = $kexueList[2]->id;
@@ -307,6 +398,23 @@ class IssueController extends Controller
             $issue['summary'] = $kexueList[2]->summary;
             $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
             $issue['desciption'] = $kexueList[2]->desciption;
+            $KexuearticleArray3 = array();
+            $articles = $this->getArticleByIssueId($kexueList[2]->id);
+            $i=0;
+            foreach ($articles as $item) {
+                $artical['ID'] = $item->ID;
+                $artical['name'] = $item->name;
+                // $artical['author'] = $item->author;
+                array_push($KexuearticleArray3, $artical);
+                $i++;
+                if($i==3)
+                {
+                  break;
+                }
+            }
+            $issue['article1']=$KexuearticleArray3[0];
+            $issue['article2']=$KexuearticleArray3[1];
+            $issue['article3']=$KexuearticleArray3[2];
             array_push($kexueListArray, $issue);
         // }
 
