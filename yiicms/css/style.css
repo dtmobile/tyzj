@@ -73,7 +73,7 @@
 .padr3{padding-right: 3px;}
 .padt3{padding-top: 3px;}
 .padb3{padding-bottom: 3px;}
-.padlf3{padding-left: -3px !important;}
+
 
 .padl6{padding-left: 6px;}
 .padr6{padding-right: 6px;}
@@ -114,6 +114,7 @@
 .margint10{margin-top: 10px;}
 .marginlr30{margin: 0 30px;}
 .marginb10{margin-bottom: 10px;}
+.mtf15{margin-top: -15px;}
 
 .marginlr15{margin-left: 15px;margin-right: 15px;}
 .padt100{padding-top: 100px;}
@@ -152,6 +153,7 @@
 .maxw800{max-width: 800px;}
 .maxw900{max-width: 900px;}
 .maxw1000{max-width: 1000px;}
+.maxw80per{max-width: 80%;}
 
 .maxH400{max-height: 400px;}
 .width1270{width: 1270px;}

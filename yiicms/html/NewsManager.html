@@ -1,47 +1,62 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-    </div>
-    <div class="panel-body row">
-        <!--<tabset class="tab-container" ng-model="tabset">-->
-            <!--<tab heading="新闻管理" ng-click=" tabset=2">-->
-                <div ng-include="'html/dialog/newsDetailDialog.html'"></div>
+<div class="panel panel-default col-md-10 col-md-offset-1">
+  <!-- <div class="panel-heading red">
+  </div> -->
+  <div class="panel-body row">
+    <!--<tabset class="tab-container" ng-model="tabset">-->
+    <!--<tab heading="新闻管理" ng-click=" tabset=2">-->
+    <div ng-include="'html/dialog/newsDetailDialog.html'"></div>
 
-        <div class="row">
-            <button class=" col-md-10 col-md-offset-1 btn btn-primary fa fa-info-circle " type="button" ng-click="create_news()" data-toggle="modal" data-target="#newsDetailDialog" popover="添加新闻" popover-trigger="mouseenter" >添加新闻</button>
+    <!-- <div class="row">
+      <button class=" col-md-10 col-md-offset-1 btn btn-primary fa fa-info-circle " type="button" ng-click="create_news()" data-toggle="modal" data-target="#newsDetailDialog" popover="添加新闻" popover-trigger="mouseenter">添加新闻</button>
+    </div> -->
 
+    <table ng-table="news_list" class="table table-hover ">
+      <!-- <caption class="font24b padb10">新闻列表</caption> -->
+      <thead>
+        <div class="container-fluid">
+          <div class="row h90 flex-column flex-center flex-middle text-center">
+            <div class="col-md-2">
+              <button class="btn btn-primary" type="button" ng-click="create_news()" data-toggle="modal" data-target="#newsDetailDialog" popover="添加新闻" popover-trigger="mouseenter">添加新闻</button>
+            </div>
+            <div class="col-md-8">
+              <div class="font24b">
+                新闻列表
+              </div>
+            </div>
+          </div>
         </div>
-                <table ng-table="news_list" class="table table-hover ">
-                    <caption class="font24b padb10">新闻列表</caption>
-                    <thead></thead>
-                    <tbody>
-                    <tr class="row" ng-repeat="news in $data">
-                        <!-- <td ng-bind="$index+1">1</td> -->
-                        <td class="col-md-1" title="'ID'">
-                           {{news.id}}
-                        </td>
-                        <td class="col-md-2" title="'图片'">
-                            <img ng-src="{{news.image}}" err-src="uploadfile/news/news1.png" />
-                        </td>
-                        <td class="col-md-7" title="'内容'">
-                            <a class="cursorpt c8e9" ng-click="open_news_view(news.id)" target="_blank">
-                                <div class="font24">{{news.title}}</div>
-                                <div class="font14 padt10">{{ news.viceTitle | characters:400 : breakOnWord }}</div>
-                                <div class="font14 padt10">{{news.createDate}}</div>
-                            </a>
-                        </td>
-                        <td class="col-md-2" title="'操作'">
-                            <button class="btn btn-danger fa fa-info-circle" type="button" ng-click="delete_news(news)" >删除</button>
-                            <button class="btn btn-success fa fa-info-circle" type="button" ng-click="modify_news(news)" data-toggle="modal" data-target="#newsDetailDialog" popover="修改新闻内容" popover-trigger="mouseenter" >修改</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+      </thead>
+      <tbody>
+        <tr class="row " ng-repeat="news in $data">
+          <!-- <td ng-bind="$index+1">1</td> -->
+          <td class="col-md-1" title="'ID'">
+            {{news.id}}
+          </td>
+          <td class="col-md-2" title="'图片'">
+            <img ng-src="{{news.image}}" err-src="uploadfile/news/news1.png" />
+          </td>
+          <td class="col-md-7" title="'内容'">
+            <a class="cursorpt c8e9" ng-click="open_news_view(news.id)" target="_blank">
+              <div class="font24">{{news.title}}</div>
+              <div class="font14 padt10">{{ news.viceTitle | characters:400 : breakOnWord }}</div>
+              <!-- <div class="font14 padt10">{{news.content}}</div> -->
+              <!-- <summernote calss="mysummernote red"  airMode ng-model="news.content"></summernote> -->
+              <div class="font14 padt10">{{news.createDate}}</div>
+            </a>
+          </td>
+          <td class="col-md-2" title="'操作'">
+            <button class="btn btn-danger fa fa-info-circle" type="button" ng-click="delete_news(news)">删除</button>
+            <button class="btn btn-success fa fa-info-circle" type="button" ng-click="modify_news(news)" data-toggle="modal" data-target="#newsDetailDialog" popover="修改新闻内容" popover-trigger="mouseenter">修改</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-            <!--</tab>-->
-            <!--<tab heading="期刊管理" ng-click=" tabset=1">-->
+    <!--</tab>-->
+    <!--<tab heading="期刊管理" ng-click=" tabset=1">-->
 
-            <!--</tab>-->
-        <!--</tabset>-->
+    <!--</tab>-->
+    <!--</tabset>-->
 
-    </div>
+  </div>
 </div>
