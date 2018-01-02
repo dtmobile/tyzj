@@ -46,6 +46,7 @@
 .pad3{padding: 3px;}
 .pad5{padding: 5px;}
 .pad10{padding: 10px;}
+
 .pad15{padding: 15px;}
 .pad20{padding: 20px;}
 .pad30{padding: 30px;}
@@ -70,6 +71,7 @@
 .padr100{padding-right: 100px;}
 
 .padl3{padding-left: 3px;}
+.padl5{padding-left: 5px;}
 .padr3{padding-right: 3px;}
 .padt3{padding-top: 3px;}
 .padb3{padding-bottom: 3px;}
@@ -110,6 +112,7 @@
 .margint40{margin-top: 40px;}
 .margint80{margin-top: 80px;}
 .marginl10{margin-left: 10px;}
+.marginl15{margin-left: 15px;}
 .marginl30{margin-left: 30px;}
 .margint10{margin-top: 10px;}
 .marginlr30{margin: 0 30px;}
