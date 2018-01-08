@@ -8,8 +8,6 @@ class IndexController extends Controller
 	 */
 	public function actionVisitInfo()
 	{
-
-
         $visitCount = TSyscfg::getVisitCount();
         $visitCount+=1;
         TSyscfg::setVisitCount($visitCount);
@@ -25,7 +23,7 @@ class IndexController extends Controller
         echo json_encode($result);
 	}
 
-    
+
     public function actionGetQuestions()
     {
         $questions_list = array();

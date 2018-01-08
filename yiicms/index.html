@@ -36,10 +36,15 @@
     <script src="lib/truncate.js"></script>
     <link href="lib/video-5.02.css" rel="stylesheet">
     <script type="text/javascript" src="lib/video-5.02.js"></script>
-	<link href="lib/bootstrap.min.css" rel="stylesheet">
+	   <link href="lib/bootstrap.min.css" rel="stylesheet">
 
+     <!-- <script type="text/javascript" src="lib/angular-datepicker.min.js"></script>
+     <link href="lib/angular-datepicker.min.css" rel="stylesheet"> -->
      <script type="text/javascript" src="lib/bootstrap-datetimepicker.min.js"></script>
      <link href="lib/bootstrap-datetimepicker.min.css" rel="stylesheet">
+     <script type="text/javascript" src="lib/jquery.bootstrap.newsbox.min.js"></script>
+
+
     <script>
         $(function() {
 
@@ -223,28 +228,22 @@
                 "path": "#/"
             }, {
                 "name": "部门介绍",
-                "path": "#/"
-                // "path": "#/aboutus"
+                "path": "#/aboutus"
             }, {
                 "name": "编委会",
-                "path": "#/"
-                // "path": "#/expertview"
+                "path": "#/expertview"
             }, {
                 "name": "新闻列表",
-                "path": "#/"
-                // "path": "#/newslist"
+                 "path": "#/newslist"
             }, {
                 "name": "在线阅读",
-                "path": "#/"
-                // "path": "#/onlinebooklist"
+                 "path": "#/onlinebooklist"
             }, {
                 "name": "交流互动",
-                "path": "#/"
-                // "path": "#/question"
+                 "path": "#/question"
             }, {
                 "name": "工具下载",
-                "path": "#/"
-                // "path": "#/tooldownload"
+                 "path": "#/tooldownload"
             }, ];
 
             var url = "index.php?r=index/VisitInfo";
@@ -278,6 +277,18 @@
                             attrs.$set('src', attrs.errSrc);
                         }
                     });
+                }
+            }
+        });
+
+        app.directive('repeatFinish',function(){
+            return {
+                link: function(scope,element,attr){
+                    // console.log(scope.$index)
+                    if(scope.$last == true){
+                        // console.log('ng-repeat执行完毕')
+                        scope.$eval( attr.repeatFinish )
+                    }
                 }
             }
         });
@@ -352,7 +363,6 @@
                   </div>
                   <span class="font14  c8e9">京公网安备11010102002898号</span>
                 </div>
-
             </div>
         </div>
     </div>
@@ -389,6 +399,14 @@
                 }
             }
         }
+
+    </script>
+
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+      $('.summernote').summernote('disable');
+    });
 
     </script>
 

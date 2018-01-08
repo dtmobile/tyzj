@@ -68,11 +68,13 @@ function Index($scope, $http){
 
         var url = "index.php?r=Issue/GetIssues&start="+$scope.issue_start_index+"&count="+$scope.issue_page_size;
         $http.get(url).success(function(data){
-      CutSummary(data.issue_list, 180);
-      CutSummary(data.kexueList, 180);
-            $scope.issues = data.issue_list;
-      $scope.kexueList = data.kexueList;
-        });
+      CutSummary(data.kejiList, 150);
+      CutSummary(data.kexueList, 150);
+      $scope.onlineKejiList = data.kejiList;
+      $scope.onlinekexueList = data.kexueList;
+
+    });
+
     $scope.open_onlinebook_view = function (articleId) {
         if (articleId == "undefined") {
             return;
@@ -80,6 +82,41 @@ function Index($scope, $http){
 
         window.location.href = "#/onlinebook_view?articleId=" + articleId + "&issueId=" + $scope.issueId;
     };
+
+    $scope.Loop_onlineKejiList = function(p_index)
+    {
+      if (p_index==2) {
+        $(".onlineKejiList").bootstrapNews({
+          newsPerPage: 4,
+          autoplay: true,
+          pauseOnHover: true,
+          navigation: false,
+          direction: 'up',
+          newsTickerInterval: 1500,
+          onToDo: function() {
+            // console.log(this);
+          }
+        });
+      }
+    }
+
+    $scope.Loop_onlineKexueList = function(p_index)
+    {
+      if (p_index==2) {
+        $(".onlineKexueList").bootstrapNews({
+          newsPerPage: 4,
+          autoplay: true,
+          pauseOnHover: true,
+          navigation: false,
+          direction: 'up',
+          newsTickerInterval: 1500,
+          onToDo: function() {
+            // console.log(this);
+          }
+        });
+      }
+    }
+
   }
     initial();
 

@@ -179,7 +179,6 @@ class IssueController extends Controller
 
     public function actionGetIssuesByPeriodicalId($periodicalId, $count, $page)
     {
-//        echo $periodicalId."  ".$count."  ".$page;
         $issueArray = $this->getIssuesBuPeriodicalId($periodicalId, $count, $page);
 
         $result = array('error_no' => 0,
@@ -250,178 +249,70 @@ class IssueController extends Controller
      */
     public function actionGetIssues($start, $count)
     {
-        $kejiListArray = array();
-        $kexueListArray = array();
-
+        $showNum = 3;
         $periodicalId = 2;//科技
         $kejiList = TIssue::model()->findAll(array('select' => array('id', 'name', 'picPath', 'summary', 'desciption'),
             'condition' => 'periodicalId=' . $periodicalId,
             'order' => 'id desc',
             'offset' => 0,
-            'limit' => 4));
+            'limit' => $showNum));
         $periodicalId = 1;//科学
         $kexueList = TIssue::model()->findAll(array('select' => array('id', 'name', 'picPath', 'summary', 'desciption'),
             'condition' => 'periodicalId=' . $periodicalId,
             'order' => 'id desc',
             'offset' => 0,
-            'limit' => 4));
+            'limit' => $showNum));
+        $kejiListArray = array();
+        $kexueListArray = array();
 
-        // if (count($kejiList) >= 2 && count($kexueList) >= 2) {
-            $issue['id'] = $kejiList[0]->id;
-            $issue['name'] = $kejiList[0]->name;
-            $issue['summary'] = $kejiList[0]->summary;
-            $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
-            $issue['desciption'] = $kejiList[0]->desciption;
+        log::getInstance()->warning('files: $kejiList count = ' . count($kejiList));
+        log::getInstance()->warning('files: $kexueList count = ' . count($kexueList));
 
-            $article1Array = array();
-            $articles = $this->getArticleByIssueId($kejiList[0]->id);
-            $i=0;
-            foreach ($articles as $item) {
-                $artical['ID'] = $item->ID;
-                $artical['name'] = $item->name;
-                // $artical['author'] = $item->author;
-                array_push($article1Array, $artical);
-                $i++;
-                if($i==3)
-                {
-                  break;
-                }
+        if(count($kejiList) >= 3 && count($kexueList) >= 3)
+        {
+          foreach ($kexueList as $item)
+          {
+            $temp['id'] = $item->id;
+            $temp['name'] = $item->name;
+            $temp['summary'] =$item->summary;
+            $temp['image'] = "img/tiyukexue.png";//$kejiList[0]->picPath;
+            $temp['desciption'] = $item->desciption;
+            $articleArray = array();
+            $articles = $this->getArticleByIssueId($item->id);
+            foreach ($articles as $key => $value) {
+               // log::getInstance()->warning('$articleArray ' . 'key = ' . $key . 'value = ' .  $value->ID . $value->name);
+               $article['id'] = $value->ID;
+               $article['name'] = $value->name;
+               array_push($articleArray, $article);
             }
-            $issue['article1']=$article1Array[0];
-            $issue['article2']=$article1Array[1];
-            $issue['article3']=$article1Array[2];
+            $temp['articles'] = $articleArray;
+            array_push($kexueListArray, $temp);
+          }
 
-            array_push($kejiListArray, $issue);
-
-            $issue['id'] = $kejiList[1]->id;
-            $issue['name'] = $kejiList[1]->name;
-            $issue['summary'] = $kejiList[1]->summary;
-            $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
-            $issue['desciption'] = $kejiList[1]->desciption;
-
-            $article2Array = array();
-            $articles = $this->getArticleByIssueId($kejiList[1]->id);
-            $i=0;
-            foreach ($articles as $item) {
-                $artical['ID'] = $item->ID;
-                $artical['name'] = $item->name;
-                // $artical['author'] = $item->author;
-                array_push($article2Array, $artical);
-                $i++;
-                if($i==3)
-                {
-                  break;
-                }
+          foreach ($kejiList as $key => $item)
+          {
+            $temp['id'] = $item->id;
+            $temp['name'] = $item->name;
+            $temp['summary'] =$item->summary;
+            $temp['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
+            $temp['desciption'] = $item->desciption;
+            $articleArray = array();
+            $articles = $this->getArticleByIssueId($item->id);
+            foreach ($articles as $key => $value) {
+               // log::getInstance()->warning('$articleArray ' . 'key = ' . $key . 'value = ' .  $value->ID . $value->name);
+               $article['id'] = $value->ID;
+               $article['name'] = $value->name;
+               array_push($articleArray, $article);
             }
-
-            $issue['article1']=$article2Array[0];
-            $issue['article2']=$article2Array[1];
-            $issue['article3']=$article2Array[2];
-
-            array_push($kejiListArray, $issue);
-
-            $issue['id'] = $kejiList[2]->id;
-            $issue['name'] = $kejiList[2]->name;
-            $issue['summary'] = $kejiList[2]->summary;
-            $issue['image'] = "img/tiyukeji.png";//$kejiList[0]->picPath;
-            $issue['desciption'] = $kejiList[2]->desciption;
-
-            $article3Array = array();
-            $articles = $this->getArticleByIssueId($kejiList[2]->id);
-            $i=0;
-            foreach ($articles as $item) {
-                $artical['ID'] = $item->ID;
-                $artical['name'] = $item->name;
-                // $artical['author'] = $item->author;
-                array_push($article3Array, $artical);
-                $i++;
-                if($i==3)
-                {
-                  break;
-                }
-            }
-            $issue['article1']=$article3Array[0];
-            $issue['article2']=$article3Array[1];
-            $issue['article3']=$article3Array[2];
-            array_push($kejiListArray, $issue);
-
-            $issue['id'] = $kexueList[0]->id;
-            $issue['name'] = $kexueList[0]->name;
-            $issue['summary'] = $kexueList[0]->summary;
-            $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
-            $issue['desciption'] = $kexueList[0]->desciption;
-            $KexuearticleArray1 = array();
-            $articles = $this->getArticleByIssueId($kexueList[0]->id);
-            $i=0;
-            foreach ($articles as $item) {
-                $artical['ID'] = $item->ID;
-                $artical['name'] = $item->name;
-                // $artical['author'] = $item->author;
-                array_push($KexuearticleArray1, $artical);
-                $i++;
-                if($i==3)
-                {
-                  break;
-                }
-            }
-            $issue['article1']=$KexuearticleArray1[0];
-            $issue['article2']=$KexuearticleArray1[1];
-            $issue['article3']=$KexuearticleArray1[2];
-            array_push($kexueListArray, $issue);
-
-            $issue['id'] = $kexueList[1]->id;
-            $issue['name'] = $kexueList[1]->name;
-            $issue['summary'] = $kexueList[1]->summary;
-            $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
-            $issue['desciption'] = $kexueList[1]->desciption;
-            $KexuearticleArray2 = array();
-            $articles = $this->getArticleByIssueId($kexueList[1]->id);
-            $i=0;
-            foreach ($articles as $item) {
-                $artical['ID'] = $item->ID;
-                $artical['name'] = $item->name;
-                // $artical['author'] = $item->author;
-                array_push($KexuearticleArray2, $artical);
-                $i++;
-                if($i==3)
-                {
-                  break;
-                }
-            }
-            $issue['article1']=$KexuearticleArray2[0];
-            $issue['article2']=$KexuearticleArray2[1];
-            $issue['article3']=$KexuearticleArray2[2];
-            array_push($kexueListArray, $issue);
-
-            $issue['id'] = $kexueList[2]->id;
-            $issue['name'] = $kexueList[2]->name;
-            $issue['summary'] = $kexueList[2]->summary;
-            $issue['image'] = "img/tiyukexue.png";//$kexueList[0]->picPath;
-            $issue['desciption'] = $kexueList[2]->desciption;
-            $KexuearticleArray3 = array();
-            $articles = $this->getArticleByIssueId($kexueList[2]->id);
-            $i=0;
-            foreach ($articles as $item) {
-                $artical['ID'] = $item->ID;
-                $artical['name'] = $item->name;
-                // $artical['author'] = $item->author;
-                array_push($KexuearticleArray3, $artical);
-                $i++;
-                if($i==3)
-                {
-                  break;
-                }
-            }
-            $issue['article1']=$KexuearticleArray3[0];
-            $issue['article2']=$KexuearticleArray3[1];
-            $issue['article3']=$KexuearticleArray3[2];
-            array_push($kexueListArray, $issue);
-        // }
+            $temp['articles'] = $articleArray;
+            array_push($kejiListArray, $temp);
+          }
+        }
 
         $result = array('error_no' => 0,
             'error_msg' => '',
             'kexueList' => $kexueListArray,
-            'issue_list' => $kejiListArray);
+            'kejiList' => $kejiListArray);
         echo json_encode($result);
     }
 
@@ -472,28 +363,4 @@ class IssueController extends Controller
             'data' => $deleteResult);
         echo json_encode($result);
     }
-
-// 	protected function getIssueList($issueId,$start,$count)
-// 	{
-// 	    $articalList = TArticle::model()->findAll(array('select'=>array('ID','issueId','name','author','summary'),
-// 	        'condition' => 'issueId='.$issueId,
-// 	        'order'=>'ID ASC',
-// 	        'offset'=>$start,
-// 	        'limit'=>$count));
-// 	    return $articalList;
-// 	}
-
-
-// 	public function getIssueTotal()
-// 	{
-// 	    $issue_total=TArticle::model()->count(array('condition' => 'id<>0'));
-
-// 	    $result = array('error_no'=>0,
-// 	        'error_msg'=>'',
-// 	        'issue_total'=>$issue_total
-// 	    );
-// 	    echo json_encode($result);
-// 	}
-
-
 }

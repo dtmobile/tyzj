@@ -72,9 +72,9 @@
           <div class="width86p ">
             <div class="item flex-row">
               <div class="kexueimg">
-              <a><img width="100%" height="100%" ng-src="{{kexueItem.image}}" /></a>
-             </div>
-              <p class="font16b padt35">{{kexueItem.name  | characters:35 : breakOnWord}}</p>
+                <a><img width="100%" height="100%" ng-src="{{kexueItem.image}}" /></a>
+              </div>
+              <p class="font16b padt35">{{kexueItem.name | characters:35 : breakOnWord}}</p>
               <div class="font14b ">{{kexueItem.author | characters:20 : breakOnWord}}</div>
               <p class="font14b ">阅读量：{{kexueItem.visitNum}}</p>
               <!-- <p class="font14 ">{{kexueItem.summary | characters:60 : breakOnWord}}</p> -->
@@ -107,7 +107,7 @@
             <div class="width86p ">
               <div class="item flex-row ">
                 <div class="kexueimg">
-                    <a><img  width="100%" height="100%" ng-src="{{kejiItem.image}}" /></a>
+                  <a><img  width="100%" height="100%" ng-src="{{kejiItem.image}}" /></a>
                 </div>
                 <p class="font16b padt35">{{kejiItem.name | characters:35 : breakOnWord}}</p>
                 <div class="font14b">{{kejiItem.author | characters:20 : breakOnWord}}</div>
@@ -220,89 +220,58 @@
   </div>
   <div class="container-fluid">
     <div class="col-md-10  col-md-offset-1 flex-column flex-center">
-      <div class="col-md-4 padt40" ng-repeat="issue in kexueList">
+      <div class="col-md-4 padt40" ng-repeat="item in onlinekexueList" ng-init="p_index=$index">
         <div class="col-md-3">
-          <a ng-click="open_issue_view(issue.id)" target="_blank"><img ng-src="{{issue.image}}" class="resp-img cursorpt" /></a>
+          <a ng-click="open_issue_view(item.id)" target="_blank"><img ng-src="{{item.image}}" class="resp-img cursorpt" /></a>
         </div>
         <div class="col-md-9 marginl-15 ">
-          <div class="font18b">体育科学 {{issue.name}}</div>
+          <div class="font18b">体育科学 {{item.name}}</div>
           <div class="blackline"></div>
-          <!-- <div class="font14 padt6 gray">{{ issue.desciption | characters:100 : breakOnWord }}</div> -->
-          <div class="flex-row">
-            <tr class="row">
-                <td >
-                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article1.ID)">
-                        <div class="font14">{{issue.article1.name | characters:22 : breakOnWord}}</div>
-                    </a>
-                </td>
-            </tr>
-            <tr class="row">
-                <td >
-                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article2.ID)">
-                        <div class="font14">{{issue.article2.name | characters:22 : breakOnWord}}</div>
-                    </a>
-                </td>
-            </tr>
-            <tr class="row">
-                <td >
-                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article3.ID)">
-                        <div class="font14">{{issue.article3.name | characters:22 : breakOnWord}}</div>
-                    </a>
-                </td>
-            </tr>
-            <tr class="row">
-                <td >
-                    <a class="cursorpt c8e9" ng-click="open_issue_view(issue.id)">
-                        <div class="font14">更多</div>
-                    </a>
-                </td>
-            </tr>
+          <div class="articles onlineKexueList">
+            <div ng-repeat="article in item.articles" repeat-finish="Loop_onlineKexueList(p_index)">
+              <a class="news-item cursorpt c8e9 font14" ng-click="open_onlinebook_view(article.id)">
+              {{article.name | characters:22 : breakOnWord}}
+            </a>
+            </div>
+          </div>
+          <div class="">
+            <a class="cursorpt c8e9 font14" ng-click="open_issue_view(item.id)">更多
+            </a>
           </div>
         </div>
       </div>
-      <div class="col-md-4 padt40" ng-repeat="issue in issues">
+
+      <div class="col-md-4 padt40" ng-repeat="item in onlineKejiList" ng-init="p_index=$index">
         <div class="col-md-3">
-          <a ng-click="open_issue_view(issue.id)" target="_blank"><img ng-src="{{issue.image}}" class="resp-img cursorpt" /></a>
+          <a ng-click="open_issue_view(item.id)" target="_blank"><img ng-src="{{item.image}}" class="resp-img cursorpt" /></a>
         </div>
         <div class="col-md-9 marginl-15">
-          <div class="font18b">中国体育科技 {{issue.name}}</div>
+          <div class="font18b">中国体育科技 {{item.name}}</div>
           <div class="blackline"></div>
-          <!-- <div class="font14 padt6 gray">{{issue.desciption | characters:100 : breakOnWord }}</div> -->
-          <div class="flex-row">
-            <tr class="row">
-                <td >
-                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article1.ID)">
-                        <div class="font14">{{issue.article1.name | characters:22 : breakOnWord}}</div>
-                    </a>
-                </td>
-            </tr>
-            <tr class="row">
-                <td >
-                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article2.ID)">
-                        <div class="font14">{{issue.article2.name | characters:22 : breakOnWord}}</div>
-                    </a>
-                </td>
-            </tr>
-            <tr class="row">
-                <td >
-                    <a class="cursorpt c8e9" ng-click="open_onlinebook_view(issue.article3.ID)">
-                        <div class="font14">{{issue.article3.name | characters:22 : breakOnWord}}</div>
-                    </a>
-                </td>
-            </tr>
-            <tr class="row">
-                <td >
-                    <a class="cursorpt c8e9" ng-click="open_issue_view(issue.id)">
-                        <div class="font14">更多</div>
-                    </a>
-                </td>
-            </tr>
+          <div class="articles onlineKejiList">
+            <div ng-repeat="article in item.articles" repeat-finish="Loop_onlineKejiList(p_index)">
+              <a class="news-item cursorpt c8e9 font14" ng-click="open_onlinebook_view(article.id)">
+              {{article.name | characters:22 : breakOnWord}}
+            </a>
+            </div>
+          </div>
+          <div class="">
+            <a class="cursorpt c8e9 font14" ng-click="open_issue_view(item.id)">更多
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- 16:9 aspect ratio -->
+<!-- <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="\yiicms\uploadfile\a.mp4"></iframe>
+</div>
+<div class="embed-responsive embed-responsive-4by3">
+  <iframe class="embed-responsive-item" src="\yiicms\uploadfile\a.mp4"></iframe>
+</div> -->
+
 <script>
   $('.carousel').carousel();
 </script>
